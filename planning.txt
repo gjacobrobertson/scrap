@@ -1,0 +1,59 @@
+Model:
+  Users:
+    data:
+      email:string
+      name: string
+      password_digest: string
+      admin:boolean
+
+      belongs to and has many: groups
+      has many: outgoing payments
+      has many: incoming payments
+
+  Groups:
+    data:
+      name:string
+      description:string
+      belongs to and has many: users
+      has many: costs
+
+  Costs:
+    data:
+      user id: integer
+      group id: integer
+      description: string
+      amount: decimal
+
+      belongs to: user
+      belongs to: group
+
+  Payments:
+    data:
+      description: string
+      amount: decimal
+      from_id: integer
+      to_id: integer
+ 
+
+ When creating a cost, everyone in the group except the buyer owes the buyer amount/(size of group)
+User A owes User B A's share of B's costs + B's payments to A - B's share of A's cost - A's payments to B
+when viewing a page, debts a set of users will be determined by the page. debts will be calculated between current user and that set.
+
+All pages other than home page will require login.
+
+Controller:
+  Users:
+    index: Index of all users
+    show: User profile page
+    new: signup page
+    create: create new user
+    edit: edit profile page
+    update: update edited user
+    
+  Group:
+    index: Index of all groups
+    show: Group page
+    new: create new group page
+    create: create new group
+    edit: edit group page
+    update: groups cannot be updated. new groups are made
