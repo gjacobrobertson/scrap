@@ -1,6 +1,13 @@
 Scrap::Application.routes.draw do
   root :to => 'pages#home'
 
+  resources :users
+  resources :sessions
+
+  match '/signup',  :to => 'users#new'
+  match '/signin',  :to => 'sessions#new'
+  match '/signout', :to => 'sessions#destroy'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

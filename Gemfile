@@ -8,6 +8,7 @@ gem 'rails', '3.1.3'
 gem 'sqlite3'
 gem 'therubyracer'
 gem 'json'
+gem 'bcrypt-ruby'
 
 group :development do
   gem 'rspec-rails'
