@@ -11,14 +11,17 @@ describe User do
 
     it "should respond to email" do
       @user = User.new
-      @user.should respond_to (:email)
+      @user.should respond_to(:email)
     end
   end
 
   describe "validations" do
 
     before(:each) do
-      @attr = { :name => "Example User", :email => "user@example.com" }
+      @attr = { :name => "Example User",
+                :email => "user@example.com",
+                :password => "foobar",
+                :password_confirmation => "foobar"}
     end
 
     it "should create a new instance given valid attributes" do
@@ -72,6 +75,19 @@ describe User do
         email = @attr[:email].upcase
         User.create!(@attr.merge(:email => email))
         user = User.new(@attr)
+        user.should_not be_valid
+      end
+    end
+
+    describe "password" do
+
+      it "should be required" do
+        user = User.new(@attr.merge(:password => "", :password_confirmation => ""))
+        user.should_not be_valid
+      end
+
+      it "should require matching confirmation" do
+        user = User.new(@attr.merge(:password_confirmation => "barfoo"))
         user.should_not be_valid
       end
     end
