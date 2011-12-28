@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to root_path, :success => "Welcome to Scrap"
+      flash[:sucess] = "Welcome to Scrap"
+      redirect_to root_path
     else
       render 'new'
     end
