@@ -52,4 +52,27 @@ describe Group do
       end
     end
   end
+
+  describe "user association" do
+
+    before(:each) do
+      @group = Factory(:group)
+      @user = Factory(:user)
+      @group.users << @user
+    end
+
+    it "should respond to users" do
+      @group.should respond_to :users
+    end
+
+    it "should have the right users" do
+      @group.users.should == [@user]
+    end
+
+    it "should not have duplicate users" do
+      lambda do
+        @group.users << @user
+      end.should raise_error
+    end
+  end
 end
