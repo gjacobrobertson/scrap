@@ -98,21 +98,21 @@ describe User do
     before(:each) do
       @group = Factory(:group)
       @user = Factory(:user)
-      @user.groups << @group
     end
 
     it "should respond to groups" do
       @user.should respond_to :groups
     end
 
-    it "should have the right groups" do
-      @user.groups.should == [@group]
+    it "should be able to join a group" do
+      @user.join_group(@group)
+      @user.group?(@group).should be_true
     end
 
-    it "should not have duplicate groups" do
-      lambda do
-        @user.groups << @group
-      end.should raise_error
+    it "should be able to leave a group" do
+      @user.join_group(@group)
+      @user.leave_group(@group)
+      @user.group?(@group).should be_false
     end
   end
 end

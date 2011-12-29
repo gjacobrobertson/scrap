@@ -14,4 +14,16 @@ class User < ActiveRecord::Base
                         :uniqueness   => { :case_sensitive => false }
   validates :password,  :presence     => true,
                         :on           => :create
+
+  def join_group(group)
+    groups << group unless group?(group)
+  end
+
+  def leave_group(group)
+    groups.delete(group)
+  end
+
+  def group?(group)
+    groups.exists?(group)
+  end
 end

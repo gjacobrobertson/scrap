@@ -58,21 +58,21 @@ describe Group do
     before(:each) do
       @group = Factory(:group)
       @user = Factory(:user)
-      @group.users << @user
     end
 
     it "should respond to users" do
       @group.should respond_to :users
     end
 
-    it "should have the right users" do
-      @group.users.should == [@user]
+    it "should be able to add a member" do
+      @group.add_member(@user)
+      @group.member?(@user).should be_true
     end
 
-    it "should not have duplicate users" do
-      lambda do
-        @group.users << @user
-      end.should raise_error
+    it "should be able to remove a member" do
+      @group.add_member(@user)
+      @group.remove_member(@user)
+      @group.member?(@user).should be_false
     end
   end
 end
