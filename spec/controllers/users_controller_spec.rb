@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe UsersController do
+render_views
 
   describe "GET 'index'" do
 
@@ -45,7 +46,6 @@ describe UsersController do
 
       before(:each) do
         @user = Factory(:user)
-        session[:user_id] = @user[:id]
       end
       
       it "should redirect to the signin page" do
@@ -168,7 +168,7 @@ describe UsersController do
       end
 
       it "should redirect to the home page" do
-        get :edit, :id => @user1
+        get :edit, :id => @user
         response.should redirect_to root_path
       end
     end
@@ -317,7 +317,7 @@ describe UsersController do
 
       it "should redirect to the home page" do
         delete :destroy, :id => @user
-        response.should_not redirect_to root_path 
+        response.should redirect_to root_path 
       end
     end
 

@@ -1,0 +1,9 @@
+<%= form_for(@user) do |f| %>
+  <%= render 'fields', :f => f %>
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+<div class="actions">
+  <%= link_to "Destroy Account", user_path(@user), :method => "DELETE" %>
