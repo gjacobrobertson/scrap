@@ -6,12 +6,12 @@ describe User do
 
     it "should respond to name" do
       @user = User.new
-      @user.should respond_to(:name)
+      @user.should respond_to :name
     end
 
     it "should respond to email" do
       @user = User.new
-      @user.should respond_to(:email)
+      @user.should respond_to :email
     end
   end
 
@@ -21,7 +21,7 @@ describe User do
       @attr = { :name => "Example User",
                 :email => "user@example.com",
                 :password => "foobar",
-                :password_confirmation => "foobar"}
+                :password_confirmation => "foobar" }
     end
 
     it "should create a new instance given valid attributes" do
