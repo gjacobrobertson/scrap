@@ -1,0 +1,15 @@
+<h1><%= @group.name %></h1>
+<% if @group.member?(current_user) %>
+  <%= link_to "edit", edit_group_path(@group) %>|
+  <%= link_to "leave", leave_group_path(@group), :method => :post %>
+<% else %>
+  <%= link_to "join", join_group_path(@group), :method => :post %>
+<% end %>
+<% if @group.description %>
+  <h2>Description</h2>
+  <p><%= @group.description %></p>
+<% end %>
+<h2>Members</h2>
+<ul>
+  <%= render @group.users %>
+</ul>

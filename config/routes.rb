@@ -3,6 +3,11 @@ Scrap::Application.routes.draw do
 
   resources :users
   resources :sessions
+  resources :groups do
+    member do
+      post :join, :leave
+    end
+  end
 
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'

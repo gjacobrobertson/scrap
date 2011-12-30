@@ -1,1 +1,6 @@
-<%= "Main page for #{current_user[:name]}" %>
+<h1><%= "#{@user.name}: Home" %></h1>
+<h2>My Groups</h2>
+<ul class="groups">
+  <%= link_to "Create new group", new_group_path %>
+  <%= render @user.groups %>
+</ul>
