@@ -10,7 +10,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111229194409) do
+ActiveRecord::Schema.define(:version => 20111230201646) do
+
+  create_table "costs", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.string   "description"
+    t.decimal  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "costs_users", :id => false, :force => true do |t|
+    t.integer "cost_id"
+    t.integer "user_id"
+  end
+
+  add_index "costs_users", ["cost_id", "user_id"], :name => "index_costs_users_on_cost_id_and_user_id", :unique => true
+  add_index "costs_users", ["cost_id"], :name => "index_costs_users_on_cost_id"
+  add_index "costs_users", ["user_id"], :name => "index_costs_users_on_user_id"
 
   create_table "groups", :force => true do |t|
     t.string   "name"

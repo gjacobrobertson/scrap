@@ -9,7 +9,12 @@
   <h2>Description</h2>
   <p><%= @group.description %></p>
 <% end %>
+<h2>Costs</h2>
+<%= render 'cost_form', :group => @group %>
+<ul class="costs">
+  <%= render @group.costs %>
+</ul>
 <h2>Members</h2>
-<ul>
+<ul class="members">
   <%= render @group.users %>
 </ul>

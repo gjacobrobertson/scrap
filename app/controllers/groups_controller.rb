@@ -7,6 +7,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @cost = Cost.new(:group_id => params[:id])
   end
 
   def new

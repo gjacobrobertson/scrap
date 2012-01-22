@@ -13,8 +13,7 @@ describe GroupsController do
       before(:each) do
         test_sign_in(@user)
       end
-
-
+    end
   end
 
   describe "GET 'show'" do

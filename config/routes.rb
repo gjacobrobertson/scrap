@@ -8,6 +8,7 @@ Scrap::Application.routes.draw do
       post :join, :leave
     end
   end
+  resources :costs, :only => [:new, :create, :edit, :update, :destroy]
 
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
