@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :groups
   has_and_belongs_to_many :costs
   has_many :costs_created, :class_name => "Cost"
+  has_many :payments_to, :class_name => "Payment", :foreign_key => "to_id"
+  has_many :payments_from, :class_name => "Payment", :foreign_key => "from_id"
 
   has_secure_password
 
