@@ -54,4 +54,11 @@ class User < ActiveRecord::Base
   def users
     costs.collect {|c| c.users}.flatten.uniq
   end
+
+  def history(user)
+    (user.costs.where(:user_id => id) +
+    costs.where(:user_id => user.id) +
+    user.payments_to.where(:from_id => id) +
+    payments_to.where(:from_id => user.id)).sort {|a,b| b.created_at <=> a.created_at}
+  end
 end

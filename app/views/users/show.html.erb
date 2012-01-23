@@ -1,11 +1,13 @@
 <%= "Profile page for #{@user.name}" %>
 <h1><%= @user.name %></h1>
 <h2>Debts</h2>
-<%= render "debt", :user => @user %>
-<h2>Payments</h2>
+<%= render "users/debt", :user => @user %>
+<h2>Make a Payment</h2>
 <%= form_for(@payment) do |f| %>
   <%= render 'payments/fields', :f => f %>
   <div class="actions">
     <%= f.submit "Make Payment" %>
   </div>
 <% end %>
+<h2>History</h2>
+<%= render @user.history(current_user)%>

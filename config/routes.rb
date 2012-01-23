@@ -9,7 +9,7 @@ Scrap::Application.routes.draw do
     end
   end
   resources :costs, :only => [:create, :edit, :update, :destroy]
-  resources :payments, :only => [:create, ,:edit, :update, :destroy] 
+  resources :payments, :only => [:create, :edit, :update, :destroy] 
 
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
