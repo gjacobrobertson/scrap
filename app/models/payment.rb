@@ -6,6 +6,6 @@ class Payment < ActiveRecord::Base
 
   validates :description, :presence => true,
                           :length => { :maximum => 50 }
-  validates amount,       :presence => true,
+  validates :amount,       :presence => true,
                           :numericality => { :greater_than => 0}
 end

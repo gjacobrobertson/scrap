@@ -39,9 +39,15 @@ class User < ActiveRecord::Base
 
   def owes(user)
     sum = 0
+
     costs.where(:user_id => user.id).each do |c|
       sum += c.amount / c.users.count
     end
+
+    payments_to.where(:from_id => user.id).each do |p|
+      sum += p.amount
+    end
+
     sum
   end
 
