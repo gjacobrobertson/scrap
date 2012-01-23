@@ -1,4 +1,8 @@
 <h1><%= "#{@user.name}: Home" %></h1>
+<h2>My Debts</h2>
+  <% @user.users.each do |user| %>
+    <%= render "users/debt", :user => user %><br/>
+  <% end %>
 <h2>My Groups</h2>
 <ul class="groups">
   <%= link_to "Create new group", new_group_path %>

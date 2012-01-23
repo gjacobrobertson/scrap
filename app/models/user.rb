@@ -42,4 +42,8 @@ class User < ActiveRecord::Base
     end
     sum
   end
+
+  def users
+    costs.collect {|c| c.users}.flatten.uniq
+  end
 end
