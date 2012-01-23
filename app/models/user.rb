@@ -42,12 +42,4 @@ class User < ActiveRecord::Base
     end
     sum
   end
-
-  def is_owed(user)
-    sum = 0
-    user.costs.where(:user_id => id).each do |c|
-      sum += c.amount / c.users.count
-    end
-    sum
-  end
 end

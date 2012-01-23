@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
   before_filter :signed_in
   before_filter :group_member, :only => [:edit, :update, :destroy]
+
   def index
     @groups = Group.all
   end
