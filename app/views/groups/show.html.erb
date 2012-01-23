@@ -10,7 +10,12 @@
   <p><%= @group.description %></p>
 <% end %>
 <h2>Costs</h2>
-<%= render 'cost_form', :group => @group %>
+<%= form_for(@cost) do |f| %>
+  <%= render 'costs/fields', :f => f %>
+  <div class="actions">
+    <%= f.submit "Add Cost" %>
+  </div>
+<% end %>
 <ul class="costs">
   <%= render @group.costs %>
 </ul>

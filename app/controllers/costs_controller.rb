@@ -3,13 +3,14 @@ class CostsController < ApplicationController
   before_filter :creator, :only => :destroy
 
   def create
-    @cost = current_user.expenses.build(params[:cost]) 
+    @cost = current_user.build_cost(params[:cost])
     if @cost.save
       flash[:success] = "Cost created"
       redirect_to @cost.group
     else
       flash.now[:error] = "Shit broke"
-      render 'groups/show', :id => params[:cost][:group_id]
+      @group = Group.find(params[:cost][:group_id])
+      render 'groups/show'
     end
   end
 
@@ -18,6 +19,8 @@ class CostsController < ApplicationController
     flash[:sucess] = "Cost destroyed"
     redirect_to @cost.group
   end
+
+  private
 
   def creator
     @cost = Cost.find(params[:id])

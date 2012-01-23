@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :groups
   has_and_belongs_to_many :costs
-  has_many :expenses, :class_name => "Cost"
+  has_many :costs_created, :class_name => "Cost"
 
   has_secure_password
 
@@ -27,5 +27,27 @@ class User < ActiveRecord::Base
 
   def group?(group)
     groups.exists?(group)
+  end
+  
+  def build_cost(cost_attr)
+    cost = costs_created.build(cost_attr)
+    cost.users = cost.group.users
+    cost
+  end
+
+  def owes(user)
+    sum = 0
+    costs.where(:user_id => user.id).each do |c|
+      sum += c.amount / c.users.count
+    end
+    sum
+  end
+
+  def is_owed(user)
+    sum = 0
+    user.costs.where(:user_id => id).each do |c|
+      sum += c.amount / c.users.count
+    end
+    sum
   end
 end
