@@ -1,0 +1,7 @@
+<h1>Edit Cost</h1>
+<%= form_for(@cost) do |f| %>
+  <%= render 'fields', :f => f %>
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>

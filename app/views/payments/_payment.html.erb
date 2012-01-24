@@ -1,3 +1,12 @@
 <li>
-<span><%= "#{payment.from.name} paid #{number_to_currency(payment.amount)} to #{payment.to.name} for #{payment.description} on #{payment.created_at.to_date}" %></span>
+<span>
+  <%= link_to payment.from.name, payment.from %>
+  <%= " paid #{number_to_currency(payment.amount)} to "%>
+  <%= link_to payment.to.name, payment.to %>
+  <%= " for #{payment.description} on #{payment.created_at.to_date}" %>
+  <% if current_user?(payment.from) %>
+    <%= link_to "edit", edit_payment_path(payment) %>|
+    <%= link_to "delete", payment_path(payment), :method => "DELETE" %>
+  <% end %>
+</span>
 </li>

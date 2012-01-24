@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_filter :store_location
   before_filter :signed_in
   before_filter :group_member, :only => [:edit, :update, :destroy]
 

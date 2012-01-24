@@ -1,5 +1,15 @@
-<% if current_user.owes(user) > user.owes(current_user) %>
-  <span><%= "You owe #{user.name} #{number_to_currency(current_user.owes(user) - user.owes(current_user))}" %></span>
-<% elsif user.owes(current_user) > current_user.owes(user) %>
-  <span><%= "#{user.name} owes you #{number_to_currency(user.owes(current_user) - current_user.owes(user))}" %></span>
+<% if current_user.owes(user) - user.owes(current_user) >= 0.01 %>
+  <span>
+    You owe <%= link_to user.name, user %>
+    <%= " #{number_to_currency(current_user.owes(user) - user.owes(current_user))}" %>
+  </span>
+<% elsif user.owes(current_user) - current_user.owes(user) >= 0.01%>
+  <span>
+    <%= link_to user.name, user %>
+    owes you <%= " #{number_to_currency(user.owes(current_user) - current_user.owes(user))}" %>
+  </span>
+<% else %>
+  <span>
+    There is no debt between you and <%= user.name %>
+  </span>
 <% end %>

@@ -1,3 +1,10 @@
 <li>
-<span><%= "#{cost.user.name} paid #{number_to_currency(cost.amount)} for #{cost.description} on #{cost.created_at.to_date}" %></span>
+<span>
+  <%= link_to cost.user.name, cost.user %>
+  <%= " paid #{number_to_currency(cost.amount)} for #{cost.description} on #{cost.created_at.to_date}" %>
+  <% if current_user?(cost.user) %>
+    <%= link_to "edit", edit_cost_path(cost) %>|
+    <%= link_to "delete", cost_path(cost), :method => "DELETE" %> 
+  <% end %>
+</span>
 </li>

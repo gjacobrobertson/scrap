@@ -36,4 +36,8 @@ module SessionsHelper
   def signed_in
     deny_access unless signed_in?
   end
+
+  def store_location
+    session[:return_to] = request.fullpath
+  end
 end

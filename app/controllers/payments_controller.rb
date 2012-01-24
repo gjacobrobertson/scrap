@@ -1,6 +1,6 @@
 class PaymentsController < ApplicationController
   before_filter :signed_in
-  before_filter :creator, :only => :destroy
+  before_filter :creator, :only => [:edit, :update, :destroy]
 
   def create
     @payment = current_user.payments_from.build(params[:payment])
@@ -13,12 +13,26 @@ class PaymentsController < ApplicationController
       render 'users/show'
     end
   end
+  
+  def edit
+  end
+
+  def update
+    if @payment.update_attributes(params[:payment])
+      flash[:success] = "Payment updated."
+      redirect_to session[:return_to]
+    else
+      render 'edit'
+    end
+  end
 
   def destroy
     @payment.destroy
     flash[:success] = "Payment destroyed"
-    redirect_to @cost.group
+    redirect_to session[:return_to]
   end
+
+  private
 
   def creator
     @payment = Payment.find(params[:id])

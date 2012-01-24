@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :store_location
   before_filter :signed_in, :only => [:index, :show, :edit, :update, :destroy]
   before_filter :correct_user, :only => [:edit, :update, :destroy]
   before_filter :signed_out, :only => [:new, :create]
