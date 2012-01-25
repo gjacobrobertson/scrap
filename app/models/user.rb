@@ -52,7 +52,9 @@ class User < ActiveRecord::Base
   end
 
   def users
-    costs.collect {|c| c.users}.flatten.uniq
+    users = costs.collect {|c| c.users}.flatten.uniq
+    users.delete(self)
+    users
   end
 
   def history(user)

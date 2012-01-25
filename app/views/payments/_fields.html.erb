@@ -1,9 +1,9 @@
-<div class="field">
+<div class="span-6 prepend-2 append-2">
   <%= f.label :description %><br />
-  <%= f.text_field :description %><br />
+  <%= f.text_field :description, :size => 28 %><br />
 </div>
-<div class="field">
+<div class="span-2 prepend-2">
   <%= f.label :amount, "Amount $" %><br />
-  <%= f.text_field :amount %><br />
+  <%= f.text_field :amount, :size => 4 %><br />
 </div>
 <div><%= f.hidden_field :to_id %></div>

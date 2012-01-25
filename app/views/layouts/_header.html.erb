@@ -1,6 +1,7 @@
-<header>
-  <nav class="round">
-    <ul>
+<div id="header" class="span-24 round">
+  <h1 id="header_title" class="span-3 prepend-1">Scrap</h1>
+  <div id="header-nav" class="span-20 last">
+    <ul class="horizontal right prepend-top">
       <li><%= link_to "Home", root_path %></li>
       <% if !current_user.nil? %>
         <li><%= link_to "Users", users_path %></li>
@@ -12,5 +13,5 @@
         <li><%= link_to "Sign in", signin_path %></li>
       <% end %>
     </ul>
-  </nav>
-</header>
+  </div>
+</div>

@@ -1,25 +1,44 @@
-<h1><%= @group.name %></h1>
-<% if @group.member?(current_user) %>
-  <%= link_to "edit", edit_group_path(@group) %>|
-  <%= link_to "leave", leave_group_path(@group), :method => :post %>
-<% else %>
-  <%= link_to "join", join_group_path(@group), :method => :post %>
-<% end %>
+<div class="span-24">
+  <h1 class="center"><%= @group.name %></h1>
+  <span class="center span-24 white">
+  <% if @group.member?(current_user) %>
+    <%= link_to "edit", edit_group_path(@group) %>|
+    <%= link_to "leave", leave_group_path(@group), :method => :post %>
+  <% else %>
+    <%= link_to "join", join_group_path(@group), :method => :post %>
+  <% end %>
+  </span>
+</div>
 <% if @group.description %>
-  <h2>Description</h2>
-  <p><%= @group.description %></p>
-<% end %>
-<h2>Costs</h2>
-<%= form_for(@cost) do |f| %>
-  <%= render 'costs/fields', :f => f %>
-  <div class="actions">
-    <%= f.submit "Add Cost" %>
+  <div class="prepend-1 span-22 append-1">
+    <div class="round subsection span-22">
+      <h2 class="center">Description</h2>
+      <span class="span-22 center"><%= @group.description %></span>
+    </div>
   </div>
 <% end %>
-<ul class="costs">
-  <%= render @group.costs %>
-</ul>
-<h2>Members</h2>
-<ul class="members">
-  <%= render @group.users %>
-</ul>
+<div class="prepend-1 span-10 append-1">
+  <div class="round subsection span-10">
+    <h2 class="center">Members</h2>
+    <ul class="members">
+      <%= render @group.users %>
+    </ul>
+  </div>
+  <div class="round subsection span-10">
+    <h2 class="center">Add a Cost</h2>
+    <%= form_for(@cost) do |f| %>
+      <%= render 'costs/fields', :f => f %>
+      <div class="span-4 append-2 prepend-top last">
+        <%= f.submit "Add Cost", :class => "right" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="prepend-1 span-10 append-1 last">
+  <div class="round subsection span-10">
+    <h2 class="center">History</h2>
+    <ul class="history">
+      <%= render @group.costs %>
+    </ul>
+  </div>
+</div>

@@ -1,13 +1,24 @@
-<%= "Profile page for #{@user.name}" %>
-<h1><%= @user.name %></h1>
-<h2>Debts</h2>
-<%= render "users/debt", :user => @user %>
-<h2>Make a Payment</h2>
-<%= form_for(@payment) do |f| %>
-  <%= render 'payments/fields', :f => f %>
-  <div class="actions">
-    <%= f.submit "Make Payment" %>
+<h1 class="span-24 last center"><%= @user.name %></h1>
+<div class="prepend-1 span-10 append-1">
+  <div class="round subsection span-10">
+    <h2 class="center">Debts</h2>
+    <span class="span-10 center"><%= render "users/debt", :user => @user %></span>
   </div>
-<% end %>
-<h2>History</h2>
-<%= render @user.history(current_user)%>
+  <div class="round subsection span-10">
+    <h2 class="center">Make a Payment</h2>
+    <%= form_for(@payment) do |f| %>
+      <%= render 'payments/fields', :f => f %>
+      <div class="span-4 last append-2 prepend-top">
+        <%= f.submit "Make Payment", :class => "right" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="prepend-1 span-10 append-1 last">
+  <div class="round subsection span-10">
+    <h2 class="center">History</h2>
+    <ul class="history">
+      <%= render @user.history(current_user)%>
+    </ul>
+  </div>
+</div>
