@@ -1,7 +1,9 @@
-<h1>Edit Payment</h1>
-<%= form_for(@payment) do |f| %>
-  <%= render 'fields', :f => f %>
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
+<h1 class="center">Edit Payment</h1>
+<div class="prepend-7 span-10 append-7">
+  <%= form_for(@payment) do |f| %>
+    <%= render 'fields', :f => f %>
+    <div class="span-4 append-2 prepend-top last">
+      <%= f.submit "Update", :class => "right" %>
+    </div>
+  <% end %>
+</div>

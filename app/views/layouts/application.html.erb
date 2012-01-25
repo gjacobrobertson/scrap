@@ -12,9 +12,11 @@
   <body>
     <div class="container">
       <%= render 'layouts/header' %>
-      <div id="section" class="span-24 last round">
+      <div id="section" class="span-24 round">
       <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, :class => "flash center prepend-1 span-22 append-1 #{key}") %>
+        <div class="prepend-1 span-22 append-1">
+          <%= content_tag(:div, value, :class => "flash center round #{key}") %>
+        </div>
       <% end %>
       <%= yield %>
       </div>

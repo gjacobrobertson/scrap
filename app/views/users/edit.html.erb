@@ -1,9 +1,12 @@
-<%= form_for(@user) do |f| %>
-  <%= render 'fields', :f => f %>
-  <div class="actions">
-    <%= f.submit "Update" %>
+<h1 class="center">Edit Account Settings</h1>
+<div class="prepend-9 span-6 append-9">
+  <%= form_for(@user) do |f| %>
+    <%= render 'fields', :f => f %>
+    <div class="span-6">
+      <%= f.submit "Update" %>
+    </div>
+  <% end %>
+  <div class="span-6">
+    <%= link_to "Destroy Account", user_path(@user), :method => "DELETE", :class=> "center" %>
   </div>
-<% end %>
-
-<div class="actions">
-  <%= link_to "Destroy Account", user_path(@user), :method => "DELETE" %>
+</div>

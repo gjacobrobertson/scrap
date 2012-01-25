@@ -1,6 +1,9 @@
-<%= form_for(@user) do |f| %>
-  <%= render 'fields', :f => f %>
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+<h1 class="center">Sign Up</h1>
+<div class="prepend-9 span-6 append-9">
+  <%= form_for(@user) do |f| %>
+    <%= render 'fields', :f => f %>
+    <div class="actions">
+      <%= f.submit "Sign up" %>
+    </div>
+  <% end %>
+</div>
