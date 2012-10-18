@@ -1,16 +1,11 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.3'
-gem 'multi_json'
-gem 'rake'
+gem 'rails', '3.2.7'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-gem 'therubyracer'
-gem 'json'
-gem 'bcrypt-ruby'
 
 group :development do
   gem 'rspec-rails'
@@ -25,8 +20,8 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.1.5'
-  gem 'coffee-rails', '~> 3.1.1'
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
 
@@ -44,3 +39,6 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug'
 
+gem 'json'
+gem 'multi_json'
+gem 'bcrypt-ruby'
