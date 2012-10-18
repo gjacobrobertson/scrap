@@ -4,8 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Scrap" %></title>
-    <%= csrf_meta_tags %>
+    <title>Scrap</title>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
@@ -35,28 +34,41 @@
     <%= favicon_link_tag 'images/favicon.ico', :rel => 'shortcut icon' %>
   </head>
   <body>
-
-    <%= render 'layouts/header'%>
-
-    <div class="container">
-      <div class="content">
-        <div class="row">
-           <div class="span12">
-              <%= yield %>
+    <div class="hero-unit">
+      <div class="container">
+        <div class='row'>
+          <div class="span9">
+            <h1>Scrap</h1>
+            <p>
+                Scrap is a social tool for tracking shared costs amongst groups of friends. I'm riding the Ballmer Peak too hard right now to go into too much detail
+            </p>
+            <%=link_to 'Sign Up Now', signup_path, :class => 'btn btn-primary'%>
+          </div>
+          <div class="span3">
+            <div class="well">
+              <%= form_for(:session, :url => sessions_path, :class => 'horizontal-form') do |f| %>
+                <div class="control-group">
+                  <%= f.label :email, 'Email', :class => 'control-label' %>
+                  <div class="controls">
+                    <%= f.text_field :email, :placeholder => "Email" %>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <%= f.label :password, 'Password', :class => 'control-label' %>
+                  <div class="controls">
+                    <%= f.password_field :password, :placeholder => "Password" %>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <div class="controls">
+                    <%= f.submit "Sign in", :class => "btn" %>
+                  </div>
+                </div>
+              <% end %>
             </div>
-        </div><!--/row-->
-      </div><!--/content-->
-
-      <footer>
-        <%= render 'layouts/footer'%>
-      </footer>
-
-    </div> <!-- /container -->
-
-    <!-- Javascripts
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <%= javascript_include_tag "application" %>
-
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

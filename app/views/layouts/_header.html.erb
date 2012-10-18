@@ -1,17 +1,21 @@
-<div id="header" class="span-24 round">
-  <h1 id="header_title" class="span-3 prepend-1">Scrap</h1>
-  <div id="header-nav" class="span-20 last">
-    <ul class="horizontal right prepend-top">
-      <li><%= link_to "Home", root_path %></li>
-      <% if !current_user.nil? %>
-        <li><%= link_to "Users", users_path %></li>
-        <li><%= link_to "Groups", groups_path %></li>
-        <li><%= link_to "Profile", current_user %></li>
-        <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-        <li><%= link_to "Sign out", signout_path %></li>
-      <% else %>
-        <li><%= link_to "Sign in", signin_path %></li>
-      <% end %>
-    </ul>
+
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <%= link_to "Scrap", root_path, :class =>"brand"%>
+      <div class="container nav-collapse">
+        <ul class="nav">
+          <li><%= link_to "Users", users_path %></li>
+          <li><%= link_to "Groups", groups_path %></li>
+          <li><%= link_to "Profile", current_user %></li>
+          <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
   </div>
 </div>

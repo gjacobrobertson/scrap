@@ -1,5 +1,22 @@
-<% if !current_user.nil? %>
-  <%= render 'pages/main' %>
-<% else %>
-  <%= render 'pages/landing' %>
-<% end %>
+<h1 class="center" ><%= "#{@user.name}: Home" %></h1>
+<div class="prepend-1 span-10 append-1">
+  <div class="span-10 round subsection">
+    <h2 class="center">My Debts</h2>
+    <ul>
+      <% @user.users.each do |user| %>
+        <li>
+        <%= render "users/debt", :user => user %><br/>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<div class="prepend-1 span-10 append-1 last">
+  <div class="span-10 round subsection">
+    <h2 class="center">My Groups</h2>
+    <%= link_to "Create new group", new_group_path, :class => "center span-10 last" %>
+    <ul class="span-10">
+      <%= render @user.groups %>
+    </ul>
+  </div>
+</div>
