@@ -3,10 +3,11 @@
   <div class="span6">
     <div class="well">
       <h2>My Debts</h2>
+      <p><%= total_debt(@user) %></p>
       <ul>
-        <% @user.users.each do |user| %>
+        <% @user.debts.each do |debt| %>
           <li>
-          <%= render "users/debt", :user => user %>
+            <%= render 'users/debt', :user => debt %>
           </li>
         <% end %>
       </ul>
@@ -15,7 +16,14 @@
   <div class="span6">
     <div class="well">
       <h2>My Groups</h2>
-      <%= link_to "Create new group", new_group_path, :class => 'btn btn-primary' %>
+      <%= form_for Group.new, :class => "form-inline" do |f| %>
+        <div class="input-append">
+          <%= f.text_field :name, :placeholder => "Create new group" %>
+          <%= content_tag :button, :type => :submit, :class => "btn btn-primary" do %>
+             <i class="icon-plus"></i>
+          <% end %>
+        </div>
+      <% end %>
       <ul>
         <%= render @user.groups %>
       </ul>

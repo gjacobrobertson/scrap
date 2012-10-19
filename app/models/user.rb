@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   def group?(group)
     groups.exists?(group)
   end
-  
+
   def build_cost(cost_attr)
     cost = costs_created.build(cost_attr)
     cost.users = cost.group.users
@@ -51,8 +51,11 @@ class User < ActiveRecord::Base
     sum
   end
 
-  def users
-    users = costs.collect {|c| c.users}.flatten.uniq
+  def debts
+    users = costs.collect {|c| c.users}.flatten
+    users += payments_to.collect {|p| p.from}
+    users += payments_from.collect {|p| p.to}
+    users = users.uniq
     users.delete(self)
     users
   end
