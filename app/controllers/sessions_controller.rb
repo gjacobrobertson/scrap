@@ -6,8 +6,10 @@ class SessionsController < ApplicationController
       flash[:success] = "Successfully logged in"
       redirect_to session[:return_to]
     else
-      flash.now.alert = "Invalid email or password"
-      render "new"
+      flash.now[:error] = "Invalid email or password"
+      @email = params[:session][:email]
+      @user = User.new
+      render "pages/landing", :layout => false
     end
   end
 
@@ -17,6 +19,6 @@ class SessionsController < ApplicationController
   end
 
   def new
-    @title = "Sign in"
+    redirect_to 'pages/landing'
   end
 end

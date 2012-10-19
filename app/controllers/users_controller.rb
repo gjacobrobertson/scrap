@@ -11,10 +11,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @payment = Payment.new(:to_id => params[:id])
   end
-  
-  def new
-    @user = User.new
-  end
 
   def create
     @user = User.new(params[:user])
@@ -23,7 +19,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to Scrap"
       redirect_to root_path
     else
-      render 'new'
+      render 'pages/landing', :layout => false
     end
   end
 

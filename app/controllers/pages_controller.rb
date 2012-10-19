@@ -3,6 +3,8 @@ class PagesController < ApplicationController
   def home
     @user = current_user
     if @user.nil?
+      @user = User.new
+      @email = nil
       render 'landing', :layout => false
     else
       render 'home'

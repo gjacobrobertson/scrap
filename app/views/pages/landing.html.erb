@@ -42,28 +42,22 @@
             <p>
                 Scrap is a social tool for tracking shared costs amongst groups of friends. I'm riding the Ballmer Peak too hard right now to go into too much detail
             </p>
-            <%=link_to 'Sign Up Now', signup_path, :class => 'btn btn-primary'%>
           </div>
           <div class="span3">
             <div class="well">
-              <%= form_for(:session, :url => sessions_path, :class => 'horizontal-form') do |f| %>
-                <div class="control-group">
-                  <%= f.label :email, 'Email', :class => 'control-label' %>
-                  <div class="controls">
-                    <%= f.text_field :email, :placeholder => "Email" %>
-                  </div>
-                </div>
-                <div class="control-group">
-                  <%= f.label :password, 'Password', :class => 'control-label' %>
-                  <div class="controls">
-                    <%= f.password_field :password, :placeholder => "Password" %>
-                  </div>
-                </div>
-                <div class="control-group">
-                  <div class="controls">
-                    <%= f.submit "Sign in", :class => "btn" %>
-                  </div>
-                </div>
+              <% flash.each do |key, value| %>
+                <%= content_tag(:div, value, :class => "flash alert #{twitterized_type(key)}") %>
+              <% end %>
+              <%= form_for(:session, :url => sessions_path) do |f| %>
+                <%= render 'sessions/fields', :f => f %>
+                <%= f.submit "Sign in", :class => "btn btn-primary" %>
+              <% end %>
+            </div>
+            <div class="well">
+              <legend>Don't have an account?</legend>
+              <%= form_for(@user) do |f| %>
+                <%= render 'users/fields', :f => f%>
+                <%= f.submit "Sign up", :class => "btn" %>
               <% end %>
             </div>
           </div>
