@@ -1,9 +1,7 @@
-<h1 class="center">Edit Payment</h1>
-<div class="prepend-7 span-10 append-7">
+<h1>Edit Payment</h1>
+<div class="well">
   <%= form_for(@payment) do |f| %>
     <%= render 'fields', :f => f %>
-    <div class="span-4 append-2 prepend-top last">
-      <%= f.submit "Update", :class => "right" %>
-    </div>
+    <%= f.submit "Update", :class => "btn btn-primary" %>
   <% end %>
 </div>
