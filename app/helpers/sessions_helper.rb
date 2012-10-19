@@ -1,11 +1,11 @@
 module SessionsHelper
-  
+
   def sign_in(user)
     session[:user_id] = user[:id]
   end
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id] 
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
   def signed_in?
@@ -17,7 +17,7 @@ module SessionsHelper
   end
 
   def deny_access
-    redirect_to signin_path, :notice => "Please sign in to access this page."
+    redirect_to root_path, :notice => "Please sign in to access this page."
   end
 
   def current_user?(user)
@@ -26,11 +26,11 @@ module SessionsHelper
 
   def correct_user
     @user = User.find(params[:id])
-    redirect_to root_path unless current_user?(@user) 
+    redirect_to root_path unless current_user?(@user)
   end
 
   def signed_out
-    redirect_to root_path if signed_in? 
+    redirect_to root_path if signed_in?
   end
 
   def signed_in
