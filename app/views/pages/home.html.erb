@@ -1,4 +1,4 @@
-<h1><%= "#{@user.name}: Home" %></h1>
+<%= provide(:pagetitle, "Home") %>
 <div class="row">
   <div class="span6">
     <div class="well">
@@ -6,7 +6,7 @@
       <ul>
         <% @user.users.each do |user| %>
           <li>
-          <%= render "users/debt", :user => user %><br/>
+          <%= render "users/debt", :user => user %>
           </li>
         <% end %>
       </ul>

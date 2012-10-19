@@ -33,19 +33,19 @@ class GroupsController < ApplicationController
   def update
     if @group.update_attributes(params[:group])
       flash[:success] = "Group updated."
-      redirect_to @group 
+      redirect_to @group
     else
       render 'edit'
     end
   end
-  
+
   def destroy
     @group.destroy
     flash[:sucess] = "Group destroyed"
     redirect_to root_path
   end
 
-  def join 
+  def join
     @group = Group.find(params[:id])
     @group.add_member(current_user)
     flash.now[:success] = "Successfully joined group"

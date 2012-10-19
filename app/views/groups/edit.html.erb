@@ -1,3 +1,4 @@
+<%=provide(:pagetitle, "Edit #{@group.name}")%>
 <%= form_for(@group) do |f| %>
   <%= render 'fields', :f => f %>
   <%= f.submit "Update Group", :class => "btn btn-primary" %>
