@@ -14,8 +14,54 @@
     color:red;
 }
 
-.total, .subtotal {
+.total{
     border-bottom-style:solid;
     border-bottom-width:1px;
     border-bottom-color:rgb(227, 227, 227);
 }
+
+.debt-list
+{
+    list-style-type:none;
+    padding:0px;
+    margin:0px;
+}
+
+.debt-list li
+{
+    text-align:left;
+}
+
+.debt-list li:first-child .item {
+    border-top-style:solid;
+    border-top-width:1px;
+    border-top-color:rgb(227,227,227);
+}
+.debt-list li .item
+{
+    border-bottom-style:solid;
+    border-bottom-width:1px;
+    border-bottom-color:rgb(227,227,227);
+    padding:4px;
+}
+
+.debt-list li .item img
+{
+    display:inline;
+}
+
+.accept {
+    color:black;
+}
+
+.accept:hover {
+    color:green;
+}
+
+.reject {
+    color:black;
+}
+
+.reject:hover {
+    color:red;
+};
