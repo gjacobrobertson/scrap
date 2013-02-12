@@ -4,7 +4,25 @@
 
 .summary {
     text-align:center;
+    border-style:solid;
+    border-width:1px;
+    border-color:rgb(204, 204, 204);
+    border-radius:5px;
+    background-color:rgb(238,238,238);
 }
+
+@media (min-width:768px) {
+    .summary .row-fluid .span6 {
+	width:50%;
+	margin:0px;
+    }
+    .summary .row-fluid .span6:first-child {
+	border-right-style:solid;
+	border-right-width:1px;
+	border-right-color:rgb(204, 204, 204);
+    }
+}
+
 
 .positive {
     color:green;
@@ -17,7 +35,7 @@
 .total{
     border-bottom-style:solid;
     border-bottom-width:1px;
-    border-bottom-color:rgb(227, 227, 227);
+    border-bottom-color:rgb(204, 204, 204);
 }
 
 .debt-list
@@ -35,14 +53,18 @@
 .debt-list li:first-child .item {
     border-top-style:solid;
     border-top-width:1px;
-    border-top-color:rgb(227,227,227);
+    border-top-color:rgb(204,204,204);
 }
 .debt-list li .item
 {
     border-bottom-style:solid;
     border-bottom-width:1px;
-    border-bottom-color:rgb(227,227,227);
+    border-bottom-color:rgb(204,204,204);
     padding:4px;
+}
+
+.debt-list li:last-child .item {
+    margin-bottom:10px;
 }
 
 .debt-list li .item img
@@ -99,7 +121,7 @@
     width:400px;
     border-top-style:solid;
     border-top-width:1px;
-    border-top-color:rgb(227, 227, 227);
+    border-top-color:rgb(204, 204, 204);
 }
 
 .approval .approval-controls {
