@@ -86,7 +86,11 @@
             </div><!--/.nav-collapse -->
           <% else %>
             <div class="pull-right">
-              <%= link_to 'Sign In', new_user_session_path, :class => 'btn' %>
+              <ul class="nav">
+                <li>
+                  <%= link_to 'Sign In', new_user_session_path %>
+                </li>
+              </ul>
             </div>
           <% end %>
         </div>
