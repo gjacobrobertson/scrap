@@ -54,22 +54,26 @@
 	    </div>
 
 	    <div class="nav-collapse collapse">
-		<%= render 'layouts/form.html' %>
 		<%= render 'layouts/mobile_form.html'%>
 
-		<div class="dropdown pull-right visible-desktop">
-		  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-		    <i class="icon-cog"></i>
-		    <b class="caret"></b>
-		  </a>
-		  <ul class="dropdown-menu">
-		    <li>
-		      <a href="#">Account Settings</a>
-		    <li>
-		      <%= link_to 'Sign Out', destroy_user_session_path, :method => 'DELETE'%>
-		    </li>
-		  </ul>
-		</div>
+		<ul class="nav pull-right">
+		  <li>
+		    <%= render 'layouts/form.html' %>
+		  </li>
+		  <li class="dropdown visible-desktop">
+		    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+		      <i class="icon-cog"></i>
+		      <b class="caret"></b>
+		    </a>
+		    <ul class="dropdown-menu">
+		      <li>
+			<a href="#">Account Settings</a>
+		      <li>
+			<%= link_to 'Sign Out', destroy_user_session_path, :method => 'DELETE'%>
+		      </li>
+		    </ul>
+		  </li>
+		</ul>
 
 		<ul class="nav hidden-desktop">
 		  <li>
