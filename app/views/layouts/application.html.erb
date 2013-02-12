@@ -45,32 +45,45 @@
 	    <span class="icon-bar"></span>
 	  </a>
 	  <a class="brand" href="#">Scrap</a>
-	  <div class="container nav-collapse">
-	    <% if user_signed_in? %>
-	      <form id="split-form" class="navbar-form form-inline pull-left">
-		<div class="input-prepend">
-		  <span class="add-on">Split $</span>
-		  <input id="input-amount" class="input-mini" type="text" placeholder="100"/>
-		</div>
-		<div class="input-prepend">
-		  <span class="add-on">for</span>
-		  <input id="input-for" class="input-medium" type="text" placeholder="Takeout"/>
-		</div>
-		<div class="input-prepend">
-		  <span class="add-on">with</span>
-		  <input id="input-with" class="input-large" type="text" placeholder="@foobar, boo@far.com"/>
-		</div>
-		<input type="submit" class="btn btn-primary" value='Split it up!'/>
-	      </form>
+	  <div class="dropdown brand">
+	    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+	      <i class="icon-flag"></i>
+	    </a>
+	    <%= render 'layouts/approvals' %>
+	  </div>
 
-	    <% end %>
-	    <div class="pull-right">
-	      <% if user_signed_in? %>
-		<%= link_to 'Sign Out', destroy_user_session_path, :method => 'DELETE', :class => 'btn'%>
-	      <% else %>
+	  <div class="nav-collapse collapse">
+	    <% if user_signed_in? %>
+	      <%= render 'layouts/form.html' %>
+	      <%= render 'layouts/mobile_form.html'%>
+
+	      <div class="dropdown pull-right visible-desktop">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+		  <i class="icon-cog"></i>
+		  <b class="caret"></b>
+		</a>
+		<ul class="dropdown-menu">
+		  <li>
+		    <a href="#">Account Settings</a>
+		  <li>
+		    <%= link_to 'Sign Out', destroy_user_session_path, :method => 'DELETE'%>
+		  </li>
+		</ul>
+	      </div>
+
+	      <ul class="nav hidden-desktop">
+		<li>
+		  <a href="#">Account Settings</a>
+		</li>
+		<li>
+		  <%= link_to 'Sign Out', destroy_user_session_path, :method => 'DELETE'%>
+		</li>
+	      </ul>
+	    <% else %>
+	      <div class="pull-right">
 		<%= link_to 'Sign In', new_user_session_path, :class => 'btn' %>
-	      <% end %>
-	    </div>
+	      </div>
+	    <% end %>
 	  </div><!--/.nav-collapse -->
 	</div>
       </div>

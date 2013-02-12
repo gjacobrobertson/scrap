@@ -66,6 +66,57 @@
     color:red;
 };
 
-#split-form {
-    text-align:center;
+.phone-label-wrapper {
+    float:left;
+}
+
+.phone-label-wrapper span.add-on {
+    width:52px;
+    box-sizing:border-box;
+    height:30px;
+}
+
+.phone-input-wrapper {
+    margin-left:50px;
+}
+
+.phone-input-wrapper input {
+    width:100%;
+    height:30px;
+    box-sizing:border-box;
+}
+
+.approvals {
+    font-size:14px;
+}
+
+.approvals li:first-child .approval {
+    border-top-style:none;
+}
+
+.approval {
+    float:left;
+    width:400px;
+    border-top-style:solid;
+    border-top-width:1px;
+    border-top-color:rgb(227, 227, 227);
+}
+
+.approval .approval-controls {
+    float:left;
+    width:28px;
+    padding:5px;
+    font-size:20px;
+}
+
+.approval .approval-description {
+    float:left;
+    width:302px;
+    padding:5px;
+}
+
+.approval .approval-gravatar {
+    float:left;
+    width:40px;
+    padding:5px;
 }
