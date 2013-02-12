@@ -47,11 +47,22 @@
           <a class="brand" href="#">Scrap</a>
           <div class="container nav-collapse">
             <% if user_signed_in? %>
-              <ul class="nav">
-                <li><%= link_to "Link1", "/path1"  %></li>
-                <li><%= link_to "Link2", "/path2"  %></li>
-                <li><%= link_to "Link3", "/path3"  %></li>
-              </ul>
+              <form id="split-form" class="navbar-form form-inline pull-left">
+                <div class="input-prepend">
+                  <span class="add-on">Split $</span>
+                  <input id="input-amount" class="input-mini" type="text" placeholder="100"/>
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">for</span>
+                  <input id="input-for" class="input-medium" type="text" placeholder="Takeout"/>
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">with</span>
+                  <input id="input-with" class="input-large" type="text" placeholder="@foobar, boo@far.com"/>
+                </div>
+                <input type="submit" class="btn btn-primary" value='Split it up!'/>
+              </form>
+
             <% end %>
             <div class="pull-right">
               <% if user_signed_in? %>
