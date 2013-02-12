@@ -6,7 +6,16 @@
         <span class="add-on">Email</span>
       </div>
       <div class="input-wrapper">
-        <%= f.email_field :email, :autofocus => true, :class => "input-large" %>
+        <%= f.email_field :email, :autofocus => true %>
+      </div>
+    </div>
+
+    <div class="input-prepend">
+      <div class="label-wrapper">
+        <span class="add-on">Username</span>
+      </div>
+      <div class="input-wrapper">
+        <input type="text"/>
       </div>
     </div>
 
@@ -15,7 +24,7 @@
         <span class="add-on">Password</span>
       </div>
       <div class="input-wrapper">
-        <%= f.password_field :password, :class => "input-large" %>
+        <%= f.password_field :password%>
       </div>
     </div>
 
@@ -24,7 +33,7 @@
         <span class="add-on">Confirmation</span>
       </div>
       <div class="input-wrapper">
-        <%= f.password_field :password_confirmation, :class=> "input-large" %>
+        <%= f.password_field :password_confirmation%>
       </div>
     </div>
 
