@@ -1,8 +1,0 @@
-<%= provide(:pagetitle, "Edit Account Settings") %>
-<div class="well">
-  <%= form_for(@user) do |f| %>
-    <%= render 'fields', :f => f %>
-    <%= f.submit "Update", :class => "btn btn-primary" %>
-  <% end %>
-  <%= link_to "Destroy Account", user_path(@user), :method => "DELETE", :class=> "center" %>
-</div>
