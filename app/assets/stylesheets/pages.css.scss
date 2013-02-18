@@ -11,6 +11,11 @@
     background-color:rgb(238,238,238);
 }
 
+.summary h1,
+.summary h2 {
+  margin-bottom:0px;
+}
+
 @media (min-width:768px) {
     .summary .row-fluid .span6 {
 	width:50%;
