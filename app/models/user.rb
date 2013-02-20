@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :remember_me, :provider, :uid, :name
+
+  has_many :debits, :class_name => 'Transaction', :foreign_key => "to"
+  has_many :credits, :class_name => 'Transaction', :foreign_key => "from"
   # attr_accessible :title, :body
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first

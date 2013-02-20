@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130213001939) do
+ActiveRecord::Schema.define(:version => 20130220004736) do
+
+  create_table "transactions", :force => true do |t|
+    t.integer  "from"
+    t.integer  "to"
+    t.float    "amount"
+    t.boolean  "confirmed"
+    t.string   "note"
+    t.string   "type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "transactions", ["from"], :name => "index_transactions_on_from"
+  add_index "transactions", ["to"], :name => "index_transactions_on_to"
 
   create_table "users", :force => true do |t|
     t.datetime "remember_created_at"
