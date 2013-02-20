@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  from: 
-  to: 
-  amount: 
-  confirmed: false
-  note: MyString
-  type: 
+  from: one
+  to: two
+  amount: 3.50
+  confirmed: nil
+  note: test one
+  type: share
 
 two:
-  from: 
-  to: 
-  amount: 
-  confirmed: false
-  note: MyString
-  type: 
+  from: two
+  to: one
+  amount: 5
+  confirmed: nil
+  note: test two
+  type: give
