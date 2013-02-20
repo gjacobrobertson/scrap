@@ -16,7 +16,10 @@ class UserTest < ActiveSupport::TestCase
     assert user.debits.is_a? Array
     assert user.credits.is_a? Array
 
-    puts user.debits
     assert user.debits.size == 1
+    assert user.credits.size == 1
+
+    assert user.debits.first.is_a? Transaction
+    assert user.debits.first.is_a? Transaction
   end
 end
