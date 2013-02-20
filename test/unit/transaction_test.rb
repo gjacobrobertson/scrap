@@ -27,13 +27,48 @@ class TransactionTest < ActiveSupport::TestCase
 
   test "validations" do
     transaction = transactions(:one)
-
     assert transaction.valid?
+  end
 
+  test "amount_validations" do
+    transaction = transactions(:one)
     transaction.amount = 0
     assert !transaction.valid?
-
     transaction.amount = -1
     assert !transaction.valid?
+    transaction.amount = nil
+    assert !transaction.valid?
+  end
+
+  test "from_validations" do
+    transaction = transactions(:one)
+    transaction.from = nil
+    assert !transaction.valid?
+  end
+
+  test "to_validations" do
+    transaction = transactions(:one)
+    transaction.to = nil
+    assert !transaction.valid?
+  end
+
+  test "note_validations" do
+    transaction = transactions(:one)
+    transaction.note = nil
+    assert transaction.valid?
+    transaction.note = ""
+    assert transaction.valid?
+  end
+
+  test "label_validations" do
+    transaction = transactions(:one)
+    transaction.label = nil
+    assert !transaction.valid?
+    transaction.label = ""
+    assert !transaction.valid?
+    transaction.label = "bogus"
+    assert !transaction.valid?
+    transaction.label = "give"
+    assert transaction.valid?
   end
 end

@@ -1,10 +1,10 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+# Read about fixtures at http: //api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
   from: one
   to: two
   amount: 3.50
-  confirmed: nil
+  confirmed: true
   note: test one
   label: share
 
@@ -12,6 +12,6 @@ two:
   from: two
   to: one
   amount: 5
-  confirmed: nil
+  confirmed: false
   note: test two
   label: give
