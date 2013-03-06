@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130306220153) do
+ActiveRecord::Schema.define(:version => 20130306221026) do
 
   create_table "split_transactions", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -29,9 +29,10 @@ ActiveRecord::Schema.define(:version => 20130306220153) do
     t.float    "amount"
     t.boolean  "confirmed"
     t.string   "note"
-    t.string   "label"
+    t.string   "type"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "split_id"
   end
 
   add_index "transactions", ["from_id"], :name => "index_transactions_on_from"
