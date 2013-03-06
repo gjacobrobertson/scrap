@@ -5,6 +5,8 @@ Scrapv2::Application.routes.draw do
     get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   end
 
+  resource :transactions, :only => [:create, :edit, :update, :delete]
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
