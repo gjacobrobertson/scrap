@@ -1,3 +1,3 @@
-class SplitTransaction < ActiveRecord::Base
+class SplitTransaction < Transaction
   # attr_accessible :title, :body
 end
