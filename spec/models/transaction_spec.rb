@@ -31,4 +31,14 @@ describe Transaction do
     before { @transaction.amount = -1.2 } 
     it { should_not be_valid }
   end
+
+  describe "when from is to" do
+    before do
+      user = FactoryGirl.build(:user)
+      @transaction.from = user
+      @transaction.to = user
+    end
+
+    it { should_not be_valid }
+  end
 end

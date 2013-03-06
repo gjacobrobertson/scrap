@@ -6,4 +6,11 @@ class Transaction < ActiveRecord::Base
   validates :amount, :numericality => { :greater_than => 0 }
   validates :from, :presence => true
   validates :to, :presence => true
+  validate :from_cannot_be_to
+
+  def from_cannot_be_to
+    if from == to
+      errors.add(:from, "Can't be from and to the same user")
+    end
+  end
 end
