@@ -27,6 +27,12 @@ group :development do
   gem 'devise'
 end
 
+group :development, :test do
+  gem 'factory_girl_rails'
+  gem 'shoulda'
+  gem 'rspec-rails'
+end
+
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password

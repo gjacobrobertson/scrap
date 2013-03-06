@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :remember_me, :provider, :uid, :name
 
+  validates :name, :presence => true
+
   has_many :debits, :class_name => 'Transaction', :foreign_key => "to_id"
   has_many :credits, :class_name => 'Transaction', :foreign_key => "from_id"
   # attr_accessible :title, :body

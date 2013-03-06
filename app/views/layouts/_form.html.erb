@@ -1,11 +1,11 @@
-<%= form_tag :transaction, :html => {:class => "navbar-form form-inline hidden-phone" } do |f| %>
+<%= form_for :transaction, :html => {:class => "navbar-form form-inline hidden-phone" } do |f| %>
   <div class="input-prepend input-append">
     <%= content_tag :span, "Split", :class => "add-on" %>
-    <%= text_field_tag :inputamount, :class => "input-mini", :placeholder => "100" %>
+    <%= text_field_tag :inputamount, "", :class => "input-mini", :placeholder => "100" %>
     <%= content_tag :span, "for", :class => "add-on" %>
-    <%= text_field_tag :inputfor, :class => "input-large", :placeholder => "Takeout"%>
+    <%= text_field_tag :inputfor, "", :class => "input-large", :placeholder => "Takeout" %>
     <%= content_tag :span, "with", :class => "add-on" %>
-    <%= text_field_tag :inputwith, :class => "input-large", :placeholder => "Foo Bar, Boo Far" %>
-    <%= submit_tag :class => "btn btn-primary", :value => "Split it up!" %>
+    <%= text_field_tag :inputwith, "", :class => "input-large", :placeholder => "Foo Bar, Bar Foo" %>
+    <%= submit_tag "Split it up!", :class => "btn btn-primary" %>
   </div>
 <% end %>
