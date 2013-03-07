@@ -1,9 +1,10 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :split do
-    from "Red Foo"
-    with ["Sky Bloo", "Foo Bar"]
-    amount 7.00
+    from { FactoryGirl.create(:user).id }
+    with {[
+      FactoryGirl.create(:user).id,
+      FactoryGirl.create(:user).id
+    ]}
+    amount 10.50
   end
 end

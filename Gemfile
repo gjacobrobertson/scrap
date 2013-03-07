@@ -31,6 +31,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'shoulda'
   gem 'rspec-rails'
+  gem 'faker'
 end
 
 gem 'jquery-rails'
