@@ -2,5 +2,8 @@
 
 FactoryGirl.define do
   factory :split do
+    from "Red Foo"
+    with ["Sky Bloo", "Foo Bar"]
+    amount 7.00
   end
 end

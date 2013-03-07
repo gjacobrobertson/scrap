@@ -6,6 +6,7 @@ Scrapv2::Application.routes.draw do
   end
 
   resource :transactions, :only => [:create, :edit, :update, :delete]
+  resource :splits, :only => [:create, :edit, :update, :delete]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
