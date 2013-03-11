@@ -1,6 +1,6 @@
 class Split < ActiveRecord::Base
   attr_accessor :from, :with, :amount, :note
-  attr_accessible :from, :with, :amount, :note
+  attr_accessible :with, :amount, :note
   has_many :split_transactions
 
   validates :from, :presence => true

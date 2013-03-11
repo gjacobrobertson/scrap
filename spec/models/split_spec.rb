@@ -1,7 +1,10 @@
 require "spec_helper"
 
 describe Split do
-  before { @split = FactoryGirl.build(:split) }
+  before do
+    @split = FactoryGirl.build(:split)
+    @split.from = FactoryGirl.create(:user)
+  end
 
   subject { @split }
 
@@ -10,6 +13,7 @@ describe Split do
   it { should respond_to :with }
   it { should respond_to :amount }
   it { should respond_to :note }
+  it { should_not allow_mass_assignment_of :from }
   it { should be_valid }
 
   describe "when from is not present" do

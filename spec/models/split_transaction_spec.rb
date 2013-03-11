@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SplitTransaction do
-  before { @transaction = FactoryGirl.build(:split_transaction) }
+  before { @transaction = FactoryGirl.build_stubbed(:split_transaction) }
 
   subject { @transaction }
 

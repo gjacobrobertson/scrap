@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :split do
-    from { FactoryGirl.create(:user).id }
     with {[
       FactoryGirl.create(:user).id,
       FactoryGirl.create(:user).id

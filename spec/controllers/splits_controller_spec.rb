@@ -1,7 +1,10 @@
 require 'spec_helper'
 
 describe SplitsController, "#create" do
-  before { @params = FactoryGirl.attributes_for(:split) }
+  before do 
+    @params = FactoryGirl.attributes_for(:split)
+    sign_in FactoryGirl.create(:user)
+  end
 
 
   describe "for a valid split" do
@@ -21,7 +24,7 @@ describe SplitsController, "#create" do
   describe "for an invalid split" do
     before do
       @count = Split.count
-      @params[:from] = nil
+      @params[:amount] = nil
       post :create, :split => @params
     end
 
