@@ -8,5 +8,6 @@ FactoryGirl.define do
   factory :user do
     name
     uid
+    provider 'facebook'
   end
 end
