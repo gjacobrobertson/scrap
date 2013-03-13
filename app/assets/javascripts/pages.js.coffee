@@ -11,6 +11,18 @@ $('#split_with').tokenInput("/friends",{
 });
 
 formSuccess = (evt, data, status, xhr) ->
+  showAlert(data)
+
+
+formFailure = (evt, xhr, status, error) ->
+  data = "
+    <div class='alert alert-error'>
+      <button type='button' class='close'>&times;</button>
+      An Error Occurred
+    </div>"
+  showAlert(data)
+
+showAlert = (data) ->
   $('#alert-container').slideUp()
     .queue( (e) ->
       $(this).html(data)
@@ -25,10 +37,6 @@ formSuccess = (evt, data, status, xhr) ->
     $('#split_amount').val('')
     $('#split_note').val('')
 
-
-formFailure = (evt, xhr, status, error) ->
-  $('#alert-container').html("An Error Occurred")
-  $('#alert-container').show()
 
 $('#new_split').bind('ajax:success', formSuccess)
 $('#new_split').bind('ajax:error', formFailure)
