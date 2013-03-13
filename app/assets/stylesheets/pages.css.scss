@@ -131,30 +131,51 @@
     text-align:center;
 }
 
-#split-wrapper {
-  border:1px solid rgb(204, 204, 204);
-  border-radius:4px;
+#split-wrapper table{
+  border-collapse:separate;
+  border: 1px solid rgb(204,204,204);
+  border-spacing:0;
+  -webkit-border-radius: 4px 4px 0px 0px;
+  border-radius:4px 4px 0px 0px;
+  width:100%
 }
 
-#split-wrapper input,
-#split-wrapper ul.token-input-list-facebook{
+#split-wrapper td{
+  border-left: 1px solid rgb(204,204,204);
+  border-top: 1px solid rgb(204,204,204);
+}
+
+#split-wrapper td:first-child {
+  border-left:none;
+}
+
+#split-wrapper td:last-child {
+  border-right:none;
+}
+
+#split-wrapper tr:first-child td {
+  border-top:none;
+}
+#split-wrapper tr:first-child td:first-child {
+  -webkit-border-radius: 4px 0px 0px 0px;
+  border-radius:4px 0px 0px 0px;
+}
+
+#split-wrapper tr:first-child td:last-child {
+  -webkit-border-radius: 0px 4px 0px 0px;
+  border-radius:0px 4px 0px 0px;
+}
+
+#split-wrapper table input,
+#split-wrapper table ul.token-input-list-facebook{
   border-style:none;
   box-shadow:none;
-}
-
-#split-wrapper .row-fluid {
-  border-bottom: 1px solid rgb(204, 204, 204);
-}
-
-#split-wrapper .row-fluid:last-child {
-  border-bottom:none;
 }
 
 #split-wrapper .label-wrapper {
   vertical-align:middle;
   width:20%;
   background-color:rgb(238,238,238);
-  border-right:1px solid rgb(204,204,204);
 }
 
 #split-wrapper .label-wrapper label {

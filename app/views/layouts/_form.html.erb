@@ -1,7 +1,7 @@
 <%= form_for @split, :as => :split, :html => {:class => "form-inline" } do |f| %>
   <div id="split-wrapper">
     <table>
-      <tr class="row-fluid">
+      <tr>
         <td class="label-wrapper">
           <%= content_tag :label, "Split"%>
         </td>
@@ -9,7 +9,7 @@
           <%= text_field :split, :amount, :placeholder => "100" %>
         </td>
       </td>
-      <tr class="row-fluid">
+      <tr>
         <td class="label-wrapper">
           <%= content_tag :label, "for" %>
         </td>
@@ -17,7 +17,7 @@
           <%= text_field :split, :note, :placeholder => "Takeout" %>
         </td>
       </tr>
-      <tr class="row-fluid">
+      <tr>
         <td class="label-wrapper">
           <%= content_tag :label, "with" %>
         </td>
