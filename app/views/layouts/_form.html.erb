@@ -1,11 +1,31 @@
-<%= form_for @split, :as => :split, :html => {:class => "navbar-form form-inline hidden-phone" } do |f| %>
-  <div class="input-prepend input-append">
-    <%= content_tag :span, "Split", :class => "add-on" %>
-    <%= text_field :split, :amount, :class => "input-mini", :placeholder => "100" %>
-    <%= content_tag :span, "for", :class => "add-on" %>
-    <%= text_field :split, :note, :class => "input-large", :placeholder => "Takeout" %>
-    <%= content_tag :span, "with", :class => "add-on" %>
-    <%= text_field :split, :with, :class => "input-large", :placeholder => "Foo Bar, Bar Foo" %>
+<%= form_for @split, :as => :split, :html => {:class => "form-inline" } do |f| %>
+  <div id="split-wrapper">
+    <table>
+      <tr class="row-fluid">
+        <td class="label-wrapper">
+          <%= content_tag :label, "Split"%>
+        </td>
+        <td class="input-wrapper">
+          <%= text_field :split, :amount, :placeholder => "100" %>
+        </td>
+      </td>
+      <tr class="row-fluid">
+        <td class="label-wrapper">
+          <%= content_tag :label, "for" %>
+        </td>
+        <td class="input-wrapper">
+          <%= text_field :split, :note, :placeholder => "Takeout" %>
+        </td>
+      </tr>
+      <tr class="row-fluid">
+        <td class="label-wrapper">
+          <%= content_tag :label, "with" %>
+        </td>
+        <td class="input-wrapper">
+          <%= text_field :split, :with, :placeholder => "Foo Bar, Bar Foo" %>
+        </td>
+      </tr>
+    </table>
     <%= submit_tag "Split it up!", :class => "btn btn-primary" %>
   </div>
 <% end %>

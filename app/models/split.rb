@@ -10,11 +10,12 @@ class Split < ActiveRecord::Base
   before_save :set_transactions
 
   def set_transactions
-    with.each do |user|
+    with_list = with.split(',')
+    with_list.each do |user|
       split_transactions.build(
         :from => User.find(from),
-        :to => User.find(user),
-        :amount => (amount.to_f / (with.size + 1)),
+        :to => User.find_by_uid(user),
+        :amount => (amount.to_f / (with_list.size + 1)),
         :note => note,
         :split => self
       )

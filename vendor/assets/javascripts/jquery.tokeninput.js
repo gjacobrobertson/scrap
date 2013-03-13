@@ -632,7 +632,8 @@ $.TokenList = function (input, url_or_data, settings) {
             .css({
                 position: "absolute",
                 top: $(token_list).offset().top + $(token_list).outerHeight(),
-                left: $(token_list).offset().left,
+                left: $(token_list).offset().left - 1,
+                width: $(token_list).outerWidth(),
                 zindex: 999
             })
             .show();

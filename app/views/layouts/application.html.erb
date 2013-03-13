@@ -18,62 +18,58 @@
 
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
-	<div class="container">
-	  <a class="brand" href="#">Scrap</a>
-	  <% if user_signed_in? %>
-	    <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-	      <span class="icon-bar"></span>
-	      <span class="icon-bar"></span>
-	      <span class="icon-bar"></span>
-	    </a>
-	    <div class="dropdown brand">
-	      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-		<i class="icon-flag"></i>
-	      </a>
-	      <%= render 'layouts/approvals' %>
-	    </div>
+  <div class="container">
+    <a class="brand" href="#">Scrap</a>
+    <% if user_signed_in? %>
+      <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <div class="dropdown brand">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <i class="icon-flag"></i>
+        </a>
+        <%= render 'layouts/approvals' %>
+      </div>
 
-	    <div class="nav-collapse collapse">
-		<%= render 'layouts/mobile_form.html'%>
+      <div class="nav-collapse collapse">
 
-		<ul class="nav pull-right">
-		  <li>
-		    <%= render 'layouts/form.html' %>
-		  </li>
-		  <li class="dropdown visible-desktop">
-		    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-		      <i class="icon-cog"></i>
-		      <b class="caret"></b>
-		    </a>
-		    <ul class="dropdown-menu">
-		      <li>
-			<a href="#">Account Settings</a>
-		      <li>
-			<%= link_to 'Sign Out', destroy_user_session_path %>
-		      </li>
-		    </ul>
-		  </li>
-		</ul>
+        <ul class="nav pull-right">
+          <li class="dropdown visible-desktop">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <i class="icon-cog"></i>
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+          <a href="#">Account Settings</a>
+              <li>
+          <%= link_to 'Sign Out', destroy_user_session_path %>
+              </li>
+            </ul>
+          </li>
+        </ul>
 
-		<ul class="nav hidden-desktop">
-		  <li>
-		    <a href="#">Account Settings</a>
-		  </li>
-		  <li>
-		    <%= link_to 'Sign Out', destroy_user_session_path %>
-		  </li>
-		</ul>
-	    </div><!--/.nav-collapse -->
-	  <% else %>
-	    <div class="pull-right">
-	      <ul class="nav">
-		<li>
-		  <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-		</li>
-	      </ul>
-	    </div>
-	  <% end %>
-	</div>
+        <ul class="nav hidden-desktop">
+          <li>
+            <a href="#">Account Settings</a>
+          </li>
+          <li>
+            <%= link_to 'Sign Out', destroy_user_session_path %>
+          </li>
+        </ul>
+          </div><!--/.nav-collapse -->
+        <% else %>
+          <div class="pull-right">
+            <ul class="nav">
+        <li>
+          <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+        </li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
       </div>
     </div>
 
@@ -82,7 +78,7 @@
 
 
       <footer>
-	<p>&copy; Jacob Robertson 2013</p>
+  <p>&copy; Jacob Robertson 2013</p>
       </footer>
 
     </div> <!-- /container -->
