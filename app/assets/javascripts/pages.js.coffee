@@ -10,4 +10,17 @@ $('#split_with').tokenInput("/friends",{
     $('#token-input-split_with').attr('placeholder', '')
 });
 
+formSuccess = (evt, data, status, xhr) ->
+  $('#notice').html(data)
+  $('#notice').show()
+  if $('#notice .success').length > 0
+    $('#split_amount').val('')
+    $('#split_note').val('')
 
+
+formFailure = (evt, xhr, status, error) ->
+  $('#notice').html("An Error Occurred")
+  $('#notice').show()
+
+$('#new_split').bind('ajax:success', formSuccess)
+$('#new_split').bind('ajax:error', formFailure)

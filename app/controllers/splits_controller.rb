@@ -14,10 +14,9 @@ class SplitsController < ApplicationController
     @split = Split.new(params[:split])
     @split.from = current_user
     if @split.save
-      render :json => @split.to_json
+      render :partial => 'success'
     else
-      response.status = 403
-      render :json => { :errors => @split.errors.full_messages }
+      render :partial => 'error'
     end
   end
 end
