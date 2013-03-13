@@ -7,6 +7,7 @@ Scrapv2::Application.routes.draw do
 
   resource :transactions, :only => [:create, :edit, :update, :delete]
   resource :splits, :only => [:create, :edit, :update, :delete]
+  match "/friends" => "facebook#friends"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
