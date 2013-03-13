@@ -11,16 +11,24 @@ $('#split_with').tokenInput("/friends",{
 });
 
 formSuccess = (evt, data, status, xhr) ->
-  $('#notice').html(data)
-  $('#notice').show()
-  if $('#notice .success').length > 0
+  $('#alert-container').slideUp()
+    .queue( (e) ->
+      $(this).html(data)
+      e()
+    ).slideDown().queue( (e) ->
+      $('#alert-container button.close').click(() ->
+        $('#alert-container').slideUp()
+      )
+      e()
+    )
+  if $('#alert-container .alert-success').length > 0
     $('#split_amount').val('')
     $('#split_note').val('')
 
 
 formFailure = (evt, xhr, status, error) ->
-  $('#notice').html("An Error Occurred")
-  $('#notice').show()
+  $('#alert-container').html("An Error Occurred")
+  $('#alert-container').show()
 
 $('#new_split').bind('ajax:success', formSuccess)
 $('#new_split').bind('ajax:error', formFailure)
