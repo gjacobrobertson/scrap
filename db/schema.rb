@@ -11,7 +11,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130213001939) do
+ActiveRecord::Schema.define(:version => 20130306221026) do
+
+  create_table "split_transactions", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "splits", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "transactions", :force => true do |t|
+    t.integer  "from_id"
+    t.integer  "to_id"
+    t.float    "amount"
+    t.boolean  "confirmed"
+    t.string   "note"
+    t.string   "type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "split_id"
+  end
+
+  add_index "transactions", ["from_id"], :name => "index_transactions_on_from"
+  add_index "transactions", ["to_id"], :name => "index_transactions_on_to"
 
   create_table "users", :force => true do |t|
     t.datetime "remember_created_at"

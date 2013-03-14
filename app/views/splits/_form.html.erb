@@ -1,0 +1,33 @@
+<%= form_for @split, :remote => true, :as => :split, :html => {:class => "form-inline" } do |f| %>
+  <div id="split-wrapper">
+    <table>
+      <tr>
+        <td class="label-wrapper">
+          <%= content_tag :label, "Split"%>
+        </td>
+        <td class="input-wrapper">
+          <%= text_field :split, :amount, :placeholder => "100" %>
+        </td>
+      </td>
+      <tr>
+        <td class="label-wrapper">
+          <%= content_tag :label, "for" %>
+        </td>
+        <td class="input-wrapper">
+          <%= text_field :split, :note, :placeholder => "Takeout" %>
+        </td>
+      </tr>
+      <tr>
+        <td class="label-wrapper">
+          <%= content_tag :label, "with" %>
+        </td>
+        <td class="input-wrapper">
+          <%= text_field :split, :with, :placeholder => "Foo Bar, Bar Foo" %>
+        </td>
+      </tr>
+    </table>
+    <div id="alert-container">
+    </div>
+    <%= submit_tag "Split it up!", :class => "btn btn-primary" %>
+  </div>
+<% end %>

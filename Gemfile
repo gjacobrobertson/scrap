@@ -27,6 +27,13 @@ group :development do
   gem 'devise'
 end
 
+group :development, :test do
+  gem 'factory_girl_rails'
+  gem 'shoulda'
+  gem 'rspec-rails'
+  gem 'faker'
+end
+
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
@@ -46,3 +53,4 @@ gem 'jquery-rails'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'fb_graph'

@@ -1,43 +1,10 @@
-<div class="summary">
-  <div class="row">
-    <div class="span12">
-      <div class="total">
-        <h1><span class="positive">$0.50</span></h1>
-        <p>Net</p>
-      </div>
-    </div>
+<div class="row">
+  <div class="span4">
+    <%= render 'splits/form.html' %>
   </div>
-  <div class="row-fluid">
-    <div class="span6">
-      <h2><span class="positive">$5.50</span></h2>
-      <p>Owed to you</p>
-      <ul class="debt-list">
-        <li>
-          <div class="item">
-            <img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?s=40" />
-            <a href="#">Foo Bar</a> owes you $3.50
-          </div>
-        </li>
-        <li>
-          <div class="item">
-            <img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?s=40" />
-            <a href="#">Red Foo</a> owes you $2
-          </div>
-        </li>
-      </ul>
-    </div>
-
-    <div class="span6">
-      <h2><span class="negative">($5)</span></h2>
-      <p>Owed by you</p>
-      <ul class="debt-list">
-        <li>
-          <div class="item">
-            <img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?s=40" />
-            You owe <a href="#">Boo Far</a> $5
-          </div>
-        </li>
-      </ul>
+  <div class="span8">
+    <div class="summary">
+      <%= render 'summary' %>
     </div>
   </div>
 </div>
