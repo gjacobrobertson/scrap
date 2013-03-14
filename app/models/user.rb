@@ -31,7 +31,6 @@ class User < ActiveRecord::Base
 
   def total_credit
     sum = 0
-    puts "CREDIT #{Transaction.where(:from_id => self.id).size}"
     Transaction.where(:from_id => self.id).each{|t| sum += t.amount}
     sum
   end
@@ -55,12 +54,12 @@ class User < ActiveRecord::Base
     amount
   end
 
-  def debts
+  def debt_subtotals
     items = debtors.collect{|u| {:user => u, :amount => debt_to(u)}}.select{|d| d[:amount] > 0}
     items.sort{|a,b| b[:amount] <=> a[:amount]}
   end
 
-  def credits
+  def credit_subtotals
     items = creditors.collect{|u| {:user => u, :amount => -1 * debt_to(u)}}.select{|d| d[:amount] > 0}
     
     items.sort{|a,b| b[:amount] <=> a[:amount]}

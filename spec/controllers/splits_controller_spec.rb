@@ -6,6 +6,11 @@ describe SplitsController, "#create" do
     sign_in FactoryGirl.create(:user)
   end
 
+  it "should respond successfully" do
+    post :create, :split => @params
+    should respond_with :success
+    should respond_with_content_type :html
+  end
 
   describe "for a valid split" do
     before do
@@ -13,11 +18,12 @@ describe SplitsController, "#create" do
       post :create, :split => @params
     end
 
-    it { should respond_with :success }
-    it { should respond_with_content_type :json }
-
     it "should create a new split" do
       Split.count.should be > @count
+    end
+
+    it "should render success" do
+      should render_template(:success)
     end
   end
 
@@ -25,19 +31,16 @@ describe SplitsController, "#create" do
     before do
       @count = Split.count
       @params[:amount] = nil
-      post :create, :split => @params
     end
 
-    it { should respond_with 403 }
-    it { should respond_with_content_type :json}
-
     it "should not create a new split" do
+      post :create, :split => @params
       Split.count.should eq @count
     end
 
-    it "should contain errors" do
-      body = JSON.parse(response.body)
-      body.should include('errors')
+    it "should render errors" do
+      post :create, :split => @params
+      should render_template(:error)
     end
   end
 end

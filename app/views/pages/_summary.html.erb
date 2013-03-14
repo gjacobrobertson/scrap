@@ -11,7 +11,7 @@
     <h2><%= format_amount current_user.total_credit%></h2>
     <p>Owed to you</p>
     <ul class="debt-list">
-      <%= render :partial => "shared/credit", :collection => current_user.credits, :as => :credit%>
+      <%= render :partial => "shared/credit", :collection => current_user.credit_subtotals, :as => :credit%>
     </ul>
   </div>
 
@@ -19,7 +19,7 @@
     <h2><%=format_amount current_user.total_debt%></h2>
     <p>Owed by you</p>
     <ul class="debt-list">
-      <%= render :partial => "shared/debt", :collection => current_user.debts, :as => :debt%>
+      <%= render :partial => "shared/debt", :collection => current_user.debt_subtotals, :as => :debt%>
     </ul>
   </div>
 </div>
