@@ -10,9 +10,20 @@ $('#split_with').tokenInput("/friends",{
     $('#token-input-split_with').attr('placeholder', '')
 });
 
+refreshSummary = () ->
+  $.ajax({
+    url:'summary',
+    success: (data, status, xhr) ->
+      $('.summary').html(data)
+  })
+
+
 formSuccess = (evt, data, status, xhr) ->
   showAlert(data)
-
+  if data.indexOf('alert-success') >= 0
+    $('#split_amount').val('')
+    $('#split_note').val('')
+    refreshSummary()
 
 formFailure = (evt, xhr, status, error) ->
   data = "
@@ -33,10 +44,6 @@ showAlert = (data) ->
       )
       e()
     )
-  if $('#alert-container .alert-success').length > 0
-    $('#split_amount').val('')
-    $('#split_note').val('')
-
 
 $('#new_split').bind('ajax:success', formSuccess)
 $('#new_split').bind('ajax:error', formFailure)
