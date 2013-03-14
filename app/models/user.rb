@@ -22,4 +22,47 @@ class User < ActiveRecord::Base
     end
     user
   end
+
+  def total_debt
+    sum = 0
+    Transaction.where(:to_id => self.id).each{|t| sum += t.amount}
+    sum
+  end
+
+  def total_credit
+    sum = 0
+    puts "CREDIT #{Transaction.where(:from_id => self.id).size}"
+    Transaction.where(:from_id => self.id).each{|t| sum += t.amount}
+    sum
+  end
+
+  def total_net
+    total_credit - total_debt
+  end
+
+  def creditors
+    Transaction.where(:from_id => self.id).collect{|t| t.to}.uniq
+  end
+
+  def debtors
+    Transaction.where(:to_id => self.id).collect{|t| t.from}.uniq
+  end
+
+  def debt_to(user)
+    amount = 0
+    Transaction.where(:from_id => self.id, :to_id => user.id).each{|t| amount -= t.amount}
+    Transaction.where(:from_id => user.id, :to_id => self.id).each{|t| amount += t.amount}
+    amount
+  end
+
+  def debts
+    items = debtors.collect{|u| {:user => u, :amount => debt_to(u)}}.select{|d| d[:amount] > 0}
+    items.sort{|a,b| b[:amount] <=> a[:amount]}
+  end
+
+  def credits
+    items = creditors.collect{|u| {:user => u, :amount => -1 * debt_to(u)}}.select{|d| d[:amount] > 0}
+    
+    items.sort{|a,b| b[:amount] <=> a[:amount]}
+  end
 end
