@@ -16,6 +16,7 @@ describe User do
   it { should respond_to :credit_subtotals }
   it { should respond_to :debt_subtotals }
   it { should respond_to :debt_to }
+  it { should respond_to :pending_approvals }
   it { should have_many :debits }
   it { should have_many :credits }
   it { should be_valid }
@@ -31,7 +32,10 @@ describe User do
       @debtor = FactoryGirl.create(:user)
       @creditor = FactoryGirl.create(:user)
       @debt = FactoryGirl.create(:split, :from => @debtor, :with => [@user.uid], :amount => 5)
+      @debt.split_transactions.each {|t| t.approve}
       @credit = FactoryGirl.create(:split, :from => @user, :with => [@creditor.uid], :amount => 10)
+      @credit.split_transactions.each{|t| t.approve}
+      @unconfirmed = FactoryGirl.create(:split, :from => @debtor, :with => [@user.uid], :amount => 15)
     end
 
     describe "total_debt" do
@@ -95,6 +99,13 @@ describe User do
         subject { @user.debt_to @creditor }
         it { should be == -5 }
       end
+    end
+
+    describe "pending_approvals" do
+      subject { @user.pending_approvals }
+      it { should be_a_kind_of Array }
+      it { should have(1).items }
+      it { should include @unconfirmed.split_transactions.first }
     end
   end
 end

@@ -27,7 +27,7 @@
         <span class="icon-bar"></span>
       </a>
       <div class="dropdown brand">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <a class="dropdown-toggle approvals-button <%= "empty" if !current_user.has_pending_approvals %>" data-toggle="dropdown" href="#">
           <i class="icon-flag"></i>
         </a>
         <%= render 'layouts/approvals' %>
@@ -45,7 +45,7 @@
               <li>
           <a href="#">Account Settings</a>
               <li>
-          <%= link_to 'Sign Out', destroy_user_session_path %>
+                <%= link_to 'Sign Out', destroy_user_session_path %>
               </li>
             </ul>
           </li>

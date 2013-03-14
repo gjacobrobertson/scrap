@@ -13,4 +13,14 @@ class Transaction < ActiveRecord::Base
       errors.add(:from, "Can't be from and to the same user")
     end
   end
+
+  def approve
+    self.confirmed = true
+    save
+  end
+
+  def reject
+    self.confirmed = false
+    save
+  end
 end

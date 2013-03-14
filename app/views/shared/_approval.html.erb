@@ -1,0 +1,18 @@
+<li>
+  <div class="approval">
+    <div class="approval-pic">
+      <%= facebook_profile_pic(approval.from) %>
+    </div>
+    <div class="approval-description">
+      <span><%= approval_description(approval) %></span>
+    </div>
+    <div class="approval-controls">
+      <%=link_to "/approve/#{approval.id}", :remote => true do %>
+        <i class='accept icon-ok'></i>
+      <% end %>
+      <%=link_to "/reject/#{approval.id}", :remote => true do %>
+        <i class='reject icon-remove'></i>
+      <% end %>
+    </div>
+  </div>
+</li>

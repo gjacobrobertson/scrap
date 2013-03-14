@@ -1,30 +1,3 @@
 <ul class="dropdown-menu approvals">
-  <li>
-    <div class="approval">
-      <div class="approval-gravatar">
-	<img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?s=40" />
-      </div>
-      <div class="approval-description">
-	<span>You owe Foo Bar $7 for movie tickets on January 1</span>
-      </div>
-      <div class="approval-controls">
-	<i class="accept icon-ok"></i>
-	<i class="reject icon-remove"></i>
-      </div>
-    </div>
-  </li>
-  <li>
-    <div class="approval">
-      <div class="approval-gravatar">
-	<img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?s=40" />
-      </div>
-      <div class="approval-description">
-	<span>Boo Far gave you $5 on February 7</span>
-      </div>
-      <div class="approval-controls">
-	<i class="accept icon-ok"></i>
-	<i class="reject icon-remove"></i>
-      </div>
-    </div>
-  </li>
+  <%= render :partial => "shared/approval", :collection => current_user.pending_approvals, :as => :approval %>
 </ul>

@@ -41,4 +41,25 @@ describe Transaction do
 
     it { should_not be_valid }
   end
+
+  describe "approve" do
+    before do
+      @transaction.approve
+    end
+
+    it "confirmed should be true" do
+      @transaction.confirmed.should be_true
+    end
+  end
+
+  describe "reject" do
+    before do
+      @transaction.reject
+    end
+
+    it "confirmed should be false" do
+      @transaction.confirmed.should be_false
+    end
+  end
+    
 end

@@ -25,13 +25,13 @@ class User < ActiveRecord::Base
 
   def total_debt
     sum = 0
-    Transaction.where(:to_id => self.id).each{|t| sum += t.amount}
+    Transaction.where(:to_id => self.id, :confirmed => true).each{|t| sum += t.amount}
     sum
   end
 
   def total_credit
     sum = 0
-    Transaction.where(:from_id => self.id).each{|t| sum += t.amount}
+    Transaction.where(:from_id => self.id, :confirmed => true).each{|t| sum += t.amount}
     sum
   end
 
@@ -40,17 +40,17 @@ class User < ActiveRecord::Base
   end
 
   def creditors
-    Transaction.where(:from_id => self.id).collect{|t| t.to}.uniq
+    Transaction.where(:from_id => self.id, :confirmed => true).collect{|t| t.to}.uniq
   end
 
   def debtors
-    Transaction.where(:to_id => self.id).collect{|t| t.from}.uniq
+    Transaction.where(:to_id => self.id, :confirmed => true).collect{|t| t.from}.uniq
   end
 
   def debt_to(user)
     amount = 0
-    Transaction.where(:from_id => self.id, :to_id => user.id).each{|t| amount -= t.amount}
-    Transaction.where(:from_id => user.id, :to_id => self.id).each{|t| amount += t.amount}
+    Transaction.where(:from_id => self.id, :to_id => user.id, :confirmed => true).each{|t| amount -= t.amount}
+    Transaction.where(:from_id => user.id, :to_id => self.id, :confirmed => true).each{|t| amount += t.amount}
     amount
   end
 
@@ -63,5 +63,13 @@ class User < ActiveRecord::Base
     items = creditors.collect{|u| {:user => u, :amount => -1 * debt_to(u)}}.select{|d| d[:amount] > 0}
     
     items.sort{|a,b| b[:amount] <=> a[:amount]}
+  end
+
+  def pending_approvals
+    Transaction.where(:to_id => self.id, :confirmed => nil).to_a
+  end
+
+  def has_pending_approvals
+    pending_approvals.count > 0
   end
 end

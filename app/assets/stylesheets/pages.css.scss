@@ -92,6 +92,9 @@
     color:red;
 };
 
+.approvals-button.empty {
+  color:rgb(119,119,119);
+}
 .approvals {
     font-size:14px;
 }
@@ -121,7 +124,7 @@
     padding:5px;
 }
 
-.approval .approval-gravatar {
+.approval .approval-pic {
     float:left;
     width:40px;
     padding:5px;
