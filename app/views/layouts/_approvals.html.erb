@@ -1,3 +1,10 @@
-<ul class="dropdown-menu approvals">
-  <%= render :partial => "shared/approval", :collection => current_user.pending_approvals, :as => :approval %>
-</ul>
+<% if current_user.has_pending_approvals %>
+  <a class="dropdown-toggle approvals-button" data-toggle="dropdown" href="#">
+    <span class="icon-flag"></span>
+  </a>
+  <ul class="dropdown-menu approvals">
+    <%= render :partial => "shared/approval", :collection => current_user.pending_approvals, :as => :approval %>
+  </ul>
+<% else %>
+  <span class="icon-flag"></span>
+<% end %>

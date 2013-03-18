@@ -45,5 +45,12 @@ showAlert = (data) ->
       e()
     )
 
+handleApproval = (evt, data, status, xhr) ->
+  $('#approval-flag').html(data)
+  refreshSummary()
+
 $('#new_split').bind('ajax:success', formSuccess)
 $('#new_split').bind('ajax:error', formFailure)
+
+$('#approve').bind('ajax:success', handleApproval)
+$('#reject').bind('ajax:success', handleApproval)

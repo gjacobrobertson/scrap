@@ -21,17 +21,14 @@
   <div class="container">
     <a class="brand" href="#">Scrap</a>
     <% if user_signed_in? %>
+      <div id="approval-flag" class="dropdown brand">
+        <%= render 'layouts/approvals' %>
+      </div>
       <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <div class="dropdown brand">
-        <a class="dropdown-toggle approvals-button <%= "empty" if !current_user.has_pending_approvals %>" data-toggle="dropdown" href="#">
-          <i class="icon-flag"></i>
-        </a>
-        <%= render 'layouts/approvals' %>
-      </div>
 
       <div class="nav-collapse collapse">
 

@@ -6,6 +6,7 @@ Scrapv2::Application.routes.draw do
   end
 
   resource :splits, :only => [:create, :edit, :update, :delete]
+  match "/approvals" => "application#approvals"
   match "/friends" => "facebook#friends"
   match "/summary" => "pages#summary"
   match "/approve/:id" => "transactions#approve"

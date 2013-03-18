@@ -4,12 +4,12 @@ class TransactionsController < ApplicationController
 
   def approve
     @transaction.approve
-    render :json => {:message => "Approve"}.to_json
+    render :partial => 'layouts/approvals'
   end
 
   def reject
     @transaction.reject
-    render :json => {:message => "Rejected"}.to_json
+    render :partial => 'layouts/approvals'
   end
 
   protected
