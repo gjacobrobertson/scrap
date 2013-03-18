@@ -6,10 +6,10 @@
     <span><%= approval_description(approval) %></span>
   </div>
   <div class="approval-controls">
-    <%=link_to "/approve/#{approval.id}", :remote => true, :id => 'approve' do %>
+    <%=link_to "/approve/#{approval.id}", :remote => true, :class => 'approve-trigger' do %>
       <span class='accept icon-ok'></span>
     <% end %>
-    <%=link_to "/reject/#{approval.id}", :remote => true, :id => 'reject' do %>
+    <%=link_to "/reject/#{approval.id}", :remote => true, :class => 'reject-trigger' do %>
       <span class='reject icon-remove'></span>
     <% end %>
   </div>
