@@ -25,13 +25,13 @@ class User < ActiveRecord::Base
 
   def total_debt
     sum = 0
-    Transaction.where(:to_id => self.id, :confirmed => true).each{|t| sum += t.amount}
+    debt_subtotals.each{|s| sum += s[:amount]}
     sum
   end
 
   def total_credit
     sum = 0
-    Transaction.where(:from_id => self.id, :confirmed => true).each{|t| sum += t.amount}
+    credit_subtotals.each{|s| sum += s[:amount]}
     sum
   end
 

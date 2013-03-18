@@ -2,79 +2,75 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//Summary
 .summary {
-    text-align:center;
-    border-style:solid;
-    border-width:1px;
-    border-color:rgb(204, 204, 204);
-    border-radius:5px;
-    background-color:rgb(238,238,238);
-}
+  text-align:center;
+  border: 1px solid rgb(204,204,204);
+  border-radius:5px;
+  background-color:rgb(238,238,238);
 
-.summary h1,
-.summary h2 {
-  margin-bottom:0px;
-}
+  h1, h2 {
+    margin-bottom:0px;
+  }
 
-@media (min-width:768px) {
-    .summary .row-fluid .span6 {
-      width:50%;
-      margin:0px;
-    }
-    .summary .row-fluid .span6:first-child {
-      border-right-style:solid;
-      border-right-width:1px;
-      border-right-color:rgb(204, 204, 204);
-    }
-}
+  .header{
+    border-bottom: 1px solid rgb(204,204,204)
+  }
 
-.positive {
+  .positive {
     color:green;
-}
+  }
 
-.negative {
+  .negative {
     color:red;
-}
-
-.total{
-    border-bottom-style:solid;
-    border-bottom-width:1px;
-    border-bottom-color:rgb(204, 204, 204);
-}
-
-.debt-list
-{
+  }
+  
+  .debt-list
+  {
     list-style-type:none;
     padding:0px;
     margin:0px;
+    li {
+      text-align:left;
+      .item {
+        border-bottom: 1px solid rgb(204,204,204);
+        padding:4px;
+        img {
+          display:inline;
+        }
+      }
+    }
+    li:last-child .item {
+      margin-bottom:10px;
+    }
+  }
 }
 
-.debt-list li
-{
-    text-align:left;
+@media (min-width:768px) {
+  .summary {
+    .row-fluid {
+      .span6 {
+        width:50%;
+        margin:0px;
+      }
+      .span6:first-child {
+        border-right:1px solid rgb(204,204,204);
+      }
+
+      .span6:last-child {
+        border-left: 1px solid rgb(204,204,204);
+        position:relative;
+        left:-1px;
+      }
+    }
+  }
 }
 
-.debt-list li:first-child .item {
-    border-top-style:solid;
-    border-top-width:1px;
-    border-top-color:rgb(204,204,204);
-}
-.debt-list li .item
-{
-    border-bottom-style:solid;
-    border-bottom-width:1px;
-    border-bottom-color:rgb(204,204,204);
-    padding:4px;
-}
 
-.debt-list li:last-child .item {
-    margin-bottom:10px;
-}
 
-.debt-list li .item img
-{
-    display:inline;
-}
+
+
+
 
 .accept {
     color:black;

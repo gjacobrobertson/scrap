@@ -1,6 +1,6 @@
 <div class="row-fluid">
   <div class="span12">
-    <div class="total">
+    <div class="header">
       <h1><%= format_amount current_user.total_net%></h1>
       <p>Net</p>
     </div>
@@ -8,16 +8,20 @@
 </div>
 <div class="row-fluid">
   <div class="span6">
-    <h2><%= format_amount current_user.total_credit%></h2>
-    <p>Owed to you</p>
+    <div class="header">
+      <h2><%= format_amount current_user.total_credit%></h2>
+      <p>Owed to you</p>
+    </div>
     <ul class="debt-list">
       <%= render :partial => "shared/credit", :collection => current_user.credit_subtotals, :as => :credit%>
     </ul>
   </div>
 
   <div class="span6">
-    <h2><%=format_amount current_user.total_debt%></h2>
-    <p>Owed by you</p>
+    <div class="header">
+      <h2><%=format_amount current_user.total_debt%></h2>
+      <p>Owed by you</p>
+    </div>
     <ul class="debt-list">
       <%= render :partial => "shared/debt", :collection => current_user.debt_subtotals, :as => :debt%>
     </ul>
