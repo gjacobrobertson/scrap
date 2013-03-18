@@ -67,6 +67,12 @@
 }
 
 #approvals {
+  .dropdown-toggle {
+    color:#0088cc;
+  }
+  .dropdown-toggle:hover {
+    color:#005580;
+  }
   .dropdown-menu {
     font-size:14px;
     .approval {
@@ -88,6 +94,9 @@
         width:28px;
         padding:5px;
         font-size:20px;
+        a:hover {
+          text-decoration:none;
+        }
         .accept, .reject {
           color:black;
         }

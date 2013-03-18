@@ -3,9 +3,11 @@
     <div class="container">
       <a class="brand" href="#">Scrap</a>
       <% if user_signed_in? %>
-        <div id="approvals" class="dropdown brand">
-          <%= render 'shared/approvals' %>
-        </div>
+        <ul class="nav">
+          <li id="approvals" class="dropdown">
+            <%= render 'shared/approvals' %>
+          </li>
+        </ul>
         <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
