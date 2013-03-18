@@ -4,12 +4,12 @@ class TransactionsController < ApplicationController
 
   def approve
     @transaction.approve
-    render :partial => 'layouts/approvals'
+    render :partial => 'shared/approvals'
   end
 
   def reject
     @transaction.reject
-    render :partial => 'layouts/approvals'
+    render :partial => 'shared/approvals'
   end
 
   protected

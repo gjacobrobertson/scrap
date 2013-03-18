@@ -8,6 +8,6 @@ class PagesController < ApplicationController
   end
 
   def summary
-    render :partial => 'summary'
+    render :partial => 'shared/summary'
   end
 end
