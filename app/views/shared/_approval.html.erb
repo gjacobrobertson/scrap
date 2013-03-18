@@ -1,18 +1,16 @@
-<li>
-  <div class="approval">
-    <div class="approval-pic">
-      <%= facebook_profile_pic(approval.from) %>
-    </div>
-    <div class="approval-description">
-      <span><%= approval_description(approval) %></span>
-    </div>
-    <div class="approval-controls">
-      <%=link_to "/approve/#{approval.id}", :remote => true, :id => 'approve' do %>
-        <span class='accept icon-ok'></span>
-      <% end %>
-      <%=link_to "/reject/#{approval.id}", :remote => true, :id => 'reject' do %>
-        <span class='reject icon-remove'></span>
-      <% end %>
-    </div>
+<li class="approval">
+  <div class="approval-pic">
+    <%= facebook_profile_pic(approval.from) %>
+  </div>
+  <div class="approval-description">
+    <span><%= approval_description(approval) %></span>
+  </div>
+  <div class="approval-controls">
+    <%=link_to "/approve/#{approval.id}", :remote => true, :id => 'approve' do %>
+      <span class='accept icon-ok'></span>
+    <% end %>
+    <%=link_to "/reject/#{approval.id}", :remote => true, :id => 'reject' do %>
+      <span class='reject icon-remove'></span>
+    <% end %>
   </div>
 </li>
