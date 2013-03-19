@@ -32,11 +32,11 @@ describe User do
       @user.save
       @debtor = FactoryGirl.create(:user)
       @creditor = FactoryGirl.create(:user)
-      @debt = FactoryGirl.create(:split, :from => @debtor, :with => [@user.uid], :amount => 5)
+      @debt = FactoryGirl.create(:split, :from => @creditor, :with => [@user.uid], :amount => 5)
       @debt.split_transactions.each {|t| t.approve}
-      @credit = FactoryGirl.create(:split, :from => @user, :with => [@creditor.uid], :amount => 10)
+      @credit = FactoryGirl.create(:split, :from => @user, :with => [@debtor.uid], :amount => 10)
       @credit.split_transactions.each{|t| t.approve}
-      @unconfirmed = FactoryGirl.create(:split, :from => @debtor, :with => [@user.uid], :amount => 15)
+      @unconfirmed = FactoryGirl.create(:split, :from => @creditor, :with => [@user.uid], :amount => 15)
       @rejected = FactoryGirl.create(:split, :from => @user, :with => [@debtor.uid], :amount => 20)
       @rejected.split_transactions.each {|t| t.reject}
     end
@@ -78,7 +78,7 @@ describe User do
       it { should be_a_kind_of Array }
       it { should have(1).items }
       it do
-        entry = { :user => @debtor, :amount => 2.50 }
+        entry = { :user => @creditor, :amount => 2.50 }
         should include entry
       end
     end
@@ -88,18 +88,18 @@ describe User do
       it { should be_a_kind_of Array }
       it { should have(1).items }
       it do
-        entry = { :user => @creditor, :amount => 5 }
+        entry = { :user => @debtor, :amount => 5 }
         should include entry
       end
     end
 
     describe "debt_to" do
-      describe "debtor" do
-        subject { @user.debt_to @debtor }
-        it { should be == 2.5 }
-      end
       describe "creditor" do
         subject { @user.debt_to @creditor }
+        it { should be == 2.5 }
+      end
+      describe "debtor" do
+        subject { @user.debt_to @debtor }
         it { should be == -5 }
       end
     end

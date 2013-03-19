@@ -39,11 +39,11 @@ class User < ActiveRecord::Base
     total_credit - total_debt
   end
 
-  def creditors
+  def debtors
     Transaction.where(:from_id => self.id, :confirmed => true).collect{|t| t.to}.uniq
   end
 
-  def debtors
+  def creditors
     Transaction.where(:to_id => self.id, :confirmed => true).collect{|t| t.from}.uniq
   end
 
@@ -55,13 +55,12 @@ class User < ActiveRecord::Base
   end
 
   def debt_subtotals
-    items = debtors.collect{|u| {:user => u, :amount => debt_to(u)}}.select{|d| d[:amount] > 0}
+    items = creditors.collect{|u| {:user => u, :amount => debt_to(u)}}.select{|d| d[:amount] > 0}
     items.sort{|a,b| b[:amount] <=> a[:amount]}
   end
 
   def credit_subtotals
-    items = creditors.collect{|u| {:user => u, :amount => -1 * debt_to(u)}}.select{|d| d[:amount] > 0}
-    
+    items = debtors.collect{|u| {:user => u, :amount => -1 * debt_to(u)}}.select{|d| d[:amount] > 0}
     items.sort{|a,b| b[:amount] <=> a[:amount]}
   end
 
