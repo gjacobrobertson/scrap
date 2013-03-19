@@ -10,20 +10,11 @@ $('#split_with').tokenInput("/friends",{
     $('#token-input-split_with').attr('placeholder', '')
 });
 
-refreshSummary = () ->
-  $.ajax({
-    url:'summary',
-    success: (data, status, xhr) ->
-      $('.summary').html(data)
-  })
-
-
 formSuccess = (evt, data, status, xhr) ->
   showAlert(data)
   if data.indexOf('alert-success') >= 0
     $('#split_amount').val('')
     $('#split_note').val('')
-    refreshSummary()
 
 formFailure = (evt, xhr, status, error) ->
   data = "
@@ -45,14 +36,19 @@ showAlert = (data) ->
       e()
     )
 
-handleApproval = (evt, data, status, xhr) ->
-  $('#approvals').html(data)
-  $('#approvals .approve-trigger').bind('ajax:success', handleApproval)
-  $('#approvals .reject-trigger').bind('ajax:success', handleApproval)
-  refreshSummary()
-
 $('#new_split').bind('ajax:success', formSuccess)
 $('#new_split').bind('ajax:error', formFailure)
 
-$('#approvals .approve-trigger').bind('ajax:success', handleApproval)
-$('#approvals .reject-trigger').bind('ajax:success', handleApproval)
+refreshSummary = () ->
+  $.ajax({
+    url:'summary',
+    success: (data, status, xhr) ->
+      $('.summary').html(data)
+  })
+
+refreshNotifications = (evt, data, status, xhr) ->
+  $('#notifications').html(data)
+  $('#notifications .refresh-trigger').bind('ajax:success', refreshNotifications)
+  refreshSummary()
+
+$('#notifications .refresh-trigger').bind('ajax:success', refreshNotifications)
