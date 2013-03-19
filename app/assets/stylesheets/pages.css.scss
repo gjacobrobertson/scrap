@@ -8,6 +8,7 @@
   border: 1px solid #CCC;
   border-radius:5px;
   background-color:#EEE;
+  padding-bottom:10px;
 
   h1, h2 {
     margin-bottom:0px;
@@ -39,9 +40,6 @@
           display:inline;
         }
       }
-    }
-    li:last-child .item {
-      margin-bottom:10px;
     }
   }
 }
