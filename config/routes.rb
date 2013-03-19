@@ -5,12 +5,13 @@ Scrapv2::Application.routes.draw do
     get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   end
 
-  resource :splits, :only => [:create, :edit, :update, :delete]
-  match "/approvals" => "application#approvals"
+  resources :transactions
+  resources :splits, :only => [:create]
+  match "/notifications" => "application#notifications"
   match "/friends" => "facebook#friends"
   match "/summary" => "pages#summary"
-  match "/approve/:id" => "transactions#approve"
-  match "/reject/:id" => "transactions#reject"
+  #match "/approve/:id" => "transactions#approve"
+  #match "/reject/:id" => "transactions#reject"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

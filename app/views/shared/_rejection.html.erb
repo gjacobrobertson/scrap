@@ -1,0 +1,16 @@
+<li class="notification">
+  <div class="notification-pic">
+    <%= facebook_profile_pic(rejection.to) %>
+  </div>
+  <div class="notification-description"
+    <span><%= rejection_description(rejection) %></span>
+  </div>
+  <div class="notification-controls">
+    <%= link_to edit_transaction_path(rejection), :remote => true, :class => 'edit-trigger' do %>
+      <span class='edit icon-edit'></span>
+    <% end %>
+    <%=link_to transaction_path(rejection), :remote => true, :class => 'refresh-trigger', :method => :delete do %>
+      <span class='delete icon-trash'></span>
+    <% end %>
+  </div>
+</li>

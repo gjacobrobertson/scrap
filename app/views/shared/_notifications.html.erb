@@ -1,9 +1,10 @@
-<% if current_user.has_pending_approvals %>
+<% if current_user.has_notifications %>
   <a class="dropdown-toggle" data-toggle="dropdown" href="#">
     <span class="icon-flag"></span>
   </a>
   <ul class="dropdown-menu">
     <%= render :partial => "shared/approval", :collection => current_user.pending_approvals, :as => :approval %>
+    <%= render :partial => "shared/rejection", :collection => current_user.rejections, :as => :rejection %>
   </ul>
 <% else %>
   <a href='#'><span class="navbar-link icon-flag"></span></a>

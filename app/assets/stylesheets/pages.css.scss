@@ -64,7 +64,7 @@
   }
 }
 
-#approvals {
+#notifications {
   .dropdown-toggle {
     color:#0088cc;
   }
@@ -73,21 +73,21 @@
   }
   .dropdown-menu {
     font-size:14px;
-    .approval {
+    .notification {
       float:left;
       width:400px;
       border-top: 1px solid #CCC;
-      .approval-pic {
+      .notification-pic {
         float:left;
         width:40px;
         padding:5px;
       }
-      .approval-description {
+      .notification-description {
         float:left;
         width:302px;
         padding:5px;
       }
-      .approval-controls {
+      .notification-controls {
         float:left;
         width:28px;
         padding:5px;
@@ -95,18 +95,24 @@
         a:hover {
           text-decoration:none;
         }
-        .accept, .reject {
+	a {
           color:black;
         }
         .accept:hover {
-          color:green
+	  color:green;
         }
         .reject:hover {
-          color:red
+	  color:red;
+	}
+	.edit:hover {
+	  color:blue;
+	}
+	.delete:hover{
+	  color:red;
         }
       }
     }
-    .approval:first-child {
+    .notification:first-child {
       border-top:none;
     }
   }

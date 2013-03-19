@@ -1,11 +1,11 @@
-<li class="approval">
-  <div class="approval-pic">
+<li class="notification">
+  <div class="notification-pic">
     <%= facebook_profile_pic(approval.from) %>
   </div>
-  <div class="approval-description">
+  <div class="notification-description">
     <span><%= approval_description(approval) %></span>
   </div>
-  <div class="approval-controls">
+  <div class="notification-controls">
     <%=link_to "/approve/#{approval.id}", :remote => true, :class => 'approve-trigger' do %>
       <span class='accept icon-ok'></span>
     <% end %>

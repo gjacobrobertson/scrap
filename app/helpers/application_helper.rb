@@ -23,4 +23,13 @@ module ApplicationHelper
       "You owe #{approval.from.name} #{number_to_currency(approval.amount)} for #{approval.note}"
     end
   end
+
+  def rejection_description(rejection)
+    case rejection.type
+    when "SplitTransaction"
+      "#{rejection.to.name} contested your split of #{number_to_currency(rejection.split_total)} #{"for #{rejection.note}" if rejection.note}"
+    else
+      "TODO"
+    end
+  end
 end

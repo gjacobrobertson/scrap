@@ -72,4 +72,16 @@ class User < ActiveRecord::Base
   def has_pending_approvals
     pending_approvals.count > 0
   end
+
+  def rejections
+    Transaction.where(:from_id => self.id, :confirmed => false).to_a
+  end
+
+  def has_rejections
+    rejections.count > 0
+  end
+
+  def has_notifications
+    has_pending_approvals || has_rejections
+  end
 end
