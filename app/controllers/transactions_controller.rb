@@ -19,7 +19,7 @@ class TransactionsController < ApplicationController
   end
 
   def edit
-    render :partial => 'shared/notifications'
+    render :partial => 'transactions/edit'
   end
 
   protected

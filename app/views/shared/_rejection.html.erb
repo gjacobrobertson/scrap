@@ -6,7 +6,7 @@
     <span><%= rejection_description(rejection) %></span>
   </div>
   <div class="notification-controls">
-    <%= link_to edit_transaction_path(rejection), :remote => true, :class => 'edit-trigger' do %>
+    <%= link_to edit_transaction_path(rejection), :data => { :toggle => 'modal', :target => '#modal' }, :class => 'edit-trigger' do %>
       <span class='edit icon-edit'></span>
     <% end %>
     <%=link_to transaction_path(rejection), :remote => true, :class => 'refresh-trigger', :method => :delete do %>

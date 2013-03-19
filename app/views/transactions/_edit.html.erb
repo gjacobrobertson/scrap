@@ -1,0 +1,6 @@
+<%= form_for @transaction, :url => transaction_path(@transaction), :method => :post, :remote => true, :html => { :class => "form-inline" } do |f| %>
+  <%= f.label :amount, 'Amount' %>
+  <%= f.text_field :amount %>
+  <%= f.label :note, "For" %>
+  <%= f.text_field :note %>
+<% end %>
