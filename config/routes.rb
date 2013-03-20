@@ -13,9 +13,9 @@ Scrapv2::Application.routes.draw do
   end
   
   resources :splits, :only => [:create]
-  match "/notifications" => "application#notifications"
-  match "/friends" => "facebook#friends"
+  match "/notifications" => "pages#notifications"
   match "/summary" => "pages#summary"
+  match "/friends" => "facebook#friends"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

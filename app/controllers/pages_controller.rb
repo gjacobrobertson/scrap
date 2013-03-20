@@ -10,4 +10,8 @@ class PagesController < ApplicationController
   def summary
     render :partial => 'shared/summary'
   end
+
+  def notifications
+    render :partial => 'shared/notifications'
+  end
 end
