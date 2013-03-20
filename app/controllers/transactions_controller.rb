@@ -1,7 +1,7 @@
 class TransactionsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :to_current_user, :only => [:approve, :reject]
-  before_filter :from_current_user, :only => [:edit, :destroy]
+  before_filter :from_current_user, :only => [:edit, :update, :destroy]
 
   def approve
     @transaction.approve
@@ -19,7 +19,17 @@ class TransactionsController < ApplicationController
   end
 
   def edit
-    render :partial => 'transactions/edit'
+    render :partial => 'transactions/form'
+  end
+
+  def update
+    @transaction.confirmed = nil
+    if @transaction.update_attributes(params[:transaction])
+      render :partial => 'shared/notifications'
+    else
+      response.status = 403
+      render :partial => 'shared/errors.html.erb', :object => @transaction
+    end
   end
 
   protected

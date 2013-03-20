@@ -1,0 +1,14 @@
+<%= form_for @transaction, :url => transaction_path(@transaction), :as => :transaction, :remote => true, :html => { :class => "form-horizontal" } do |f| %>
+  <div class="control-group">
+    <%= f.label :amount, 'Amount', :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :amount, :value => number_with_precision(@transaction.amount, :precision => 2) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :note, "For", :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :note %>
+    </div>
+  </div>
+<% end %>

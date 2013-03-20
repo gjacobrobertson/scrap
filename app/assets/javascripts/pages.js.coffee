@@ -52,3 +52,19 @@ refreshNotifications = (evt, data, status, xhr) ->
   refreshSummary()
 
 $('#notifications .refresh-trigger').bind('ajax:success', refreshNotifications)
+
+editSuccess = (evt, data, status, xhr) ->
+  refreshNotifications(evt, data, status, xhr)
+  $('#edit-modal').modal('hide')
+
+editFailure = (evt, xhr, status, error) ->
+  if xhr.status == 403
+    $('#edit-modal .error').html(xhr.responseText)
+  else
+    $('#edit-modal .error').html("An Error Occurred")
+
+
+$('#edit-submit').click(() ->
+  $('#edit-modal form').bind('ajax:success', editSuccess)
+  $('#edit-modal form').bind('ajax:error', editFailure)
+  $('#edit-modal form').submit())
