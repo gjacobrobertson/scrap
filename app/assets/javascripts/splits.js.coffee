@@ -4,24 +4,27 @@
 
 formSuccess = (evt, data, status, xhr) ->
   showAlert(data)
-  if data.indexOf('alert-success') >= 0
-    $('#split_amount').val('')
-    $('#split_note').val('')
+  $('#split_amount').val('')
+  $('#split_note').val('')
 
 formFailure = (evt, xhr, status, error) ->
-  data = "
-    <div class='alert alert-error'>
-      <button type='button' class='close'>&times;</button>
-      An Error Occurred
-    </div>"
-  showAlert(data)
+  if xhr.status = 403
+    showAlert(xhr.responseText)
+  else
+    showAlert( "
+      <div class='alert alert-error'>
+        <button type='button' class='close'>&times;</button>
+        An Error Occurred
+      </div>")
 
 showAlert = (data) ->
-  $('#alert-container').slideUp()
-    .queue( (e) ->
+  if $('#alert-container').is(":visible")
+    $('#alert-container').slideUp()
+  $('#alert-container').queue( (e) ->
       $(this).html(data)
-      e()
-    ).slideDown().queue( (e) ->
+      e())
+    .slideDown()
+    .queue( (e) ->
       $('#alert-container button.close').click(() ->
         $('#alert-container').slideUp()
       )

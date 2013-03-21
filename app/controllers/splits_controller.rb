@@ -14,9 +14,10 @@ class SplitsController < ApplicationController
     @split = Split.new(params[:split])
     @split.from = current_user
     if @split.save
-      render :partial => 'success'
+      render :partial => 'alert'
     else
-      render :partial => 'error'
+      response.status = 403
+      render :partial => 'alert'
     end
   end
 end

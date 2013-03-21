@@ -1,0 +1,5 @@
+<%= content_tag :div, :class => "alert alert-#{@split.valid? ? 'success' : 'error' }" do %>
+  <button type="button" class="close">&times;</button>
+  <%= alertMessage(@split) %>
+<% end %>
+
