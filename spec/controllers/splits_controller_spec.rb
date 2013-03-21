@@ -22,8 +22,8 @@ describe SplitsController, "#create" do
       Split.count.should be > @count
     end
 
-    it "should render success" do
-      should render_template(:success)
+    it "should render alert" do
+      should render_template(:alert)
     end
   end
 
@@ -38,9 +38,9 @@ describe SplitsController, "#create" do
       Split.count.should eq @count
     end
 
-    it "should render errors" do
+    it "should render alert" do
       post :create, :split => @params
-      should render_template(:error)
+      should render_template(:alert)
     end
   end
 end
