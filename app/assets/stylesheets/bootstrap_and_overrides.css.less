@@ -31,3 +31,8 @@ body { padding-top:60px; }
 //
 // Example:
 // @linkColor: #ff0000;
+@linkColor: darken(@yellow, 15%);
+@backgroundColor: @wellBackground;
+@borderColor: darken(@backgroundColor, 7%);
+@btnPrimaryBackground: lighten(@linkColor, 10%);
+@btnPrimaryBackgroundHighlight: @linkColor;

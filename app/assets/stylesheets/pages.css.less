@@ -1,13 +1,10 @@
-// Place all the styles related to the Pages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap_and_overrides.css.less";
 
-//Summary
 .summary {
   text-align:center;
-  border: 1px solid #CCC;
-  border-radius:5px;
-  background-color:#EEE;
+  border: 1px solid @borderColor;
+  border-radius:@baseBorderRadius;
+  background-color:@backgroundColor;
   padding-bottom:10px;
 
   h1, h2 {
@@ -15,15 +12,15 @@
   }
 
   .header{
-    border-bottom: 1px solid #CCC
+    border-bottom: 1px solid @borderColor
   }
 
   .positive {
-    color:green;
+    color:@green;
   }
 
   .negative {
-    color:red;
+    color:@red;
   }
   
   .debt-list
@@ -34,7 +31,7 @@
     li {
       text-align:left;
       .item {
-        border-bottom: 1px solid #CCC;
+        border-bottom: 1px solid @borderColor;
         padding:4px;
         img {
           display:inline;
@@ -52,11 +49,11 @@
         margin:0px;
       }
       .span6:first-child {
-        border-right:1px solid #CCC;
+        border-right:1px solid @borderColor;
       }
 
       .span6:last-child {
-        border-left: 1px solid #CCC;
+        border-left: 1px solid @borderColor;
         position:relative;
         left:-1px;
       }
@@ -66,17 +63,17 @@
 
 #notifications {
   .dropdown-toggle {
-    color:#0088cc;
+    color:@linkColor;
   }
   .dropdown-toggle:hover {
-    color:#005580;
+    color:lighten(@linkColor, 15%);
   }
   .dropdown-menu {
     font-size:14px;
     .notification {
       float:left;
       width:400px;
-      border-top: 1px solid #CCC;
+      border-top: 1px solid @borderColor;
       .notification-pic {
         float:left;
         width:40px;
@@ -95,20 +92,33 @@
         a:hover {
           text-decoration:none;
         }
-        a {
-          color:black;
+
+        .accept {
+          color:@green;
         }
         .accept:hover {
-          color:green;
+          color:darken(@green, 15%);
+        }
+
+        .reject {
+          color: @red;
         }
         .reject:hover {
-          color:red;
+          color:darken(@red, 15%);
+        }
+
+        .edit {
+          color: #08c;
         }
         .edit:hover {
-          color:blue;
+          color: darken(#08c, 15%);
+        }
+
+        .delete {
+          color:@red;
         }
         .delete:hover{
-          color:red;
+          color:darken(@red, 15%);
         }
       }
     }
@@ -121,13 +131,13 @@
 #split-wrapper {
   table {
     border-collapse: separate;
-    border: 1px solid #CCC;
+    border: 1px solid @borderColor;
     border-spacing: 0;
-    border-radius: 4px 4px 0px 0px;
+    border-radius: @baseBorderRadius @baseBorderRadius 0px 0px;
     width: 100%;
     td{
-      border-left: 1px solid #CCC;
-      border-top: 1px solid #CCC;
+      border-left: 1px solid @borderColor;
+      border-top: 1px solid @borderColor;
     }
 
     td:first-child {
@@ -139,10 +149,10 @@
         border-top: none;
       }
       td:first-child {
-        border-radius: 4px 0px 0px 0px;
+        border-radius: @baseBorderRadius 0px 0px 0px;
       }
       td:last-child {
-        border-radius: 0px 4px 0px 0px;
+        border-radius: 0px @baseBorderRadius 0px 0px;
       }
     }
 
@@ -154,7 +164,7 @@
     .label-wrapper {
       vertical-align:middle;
       width:20%;
-      background-color:#EEE;
+      background-color:@backgroundColor;
       label {
         margin:0px;
         padding-left:4px;
@@ -206,6 +216,6 @@
 
 #edit-modal {
   .error {
-    color:red;
+    color:@red;
   }
 }
