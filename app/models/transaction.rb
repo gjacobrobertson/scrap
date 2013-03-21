@@ -23,4 +23,10 @@ class Transaction < ActiveRecord::Base
     self.confirmed = false
     save
   end
+
+  before_save :round_pennies
+
+  def round_pennies
+    self.amount = self.amount.round(2)
+  end
 end
