@@ -5,7 +5,7 @@ describe TransactionsController do
     @user = FactoryGirl.create(:user)
     sign_in @user
     @debtor = FactoryGirl.create(:user)
-    @split = FactoryGirl.create(:split, :from => @debtor, :with => [@user.uid])
+    @split = FactoryGirl.create(:split, :from => @debtor, :with => [@user])
     @transaction = @split.split_transactions.first
   end
 

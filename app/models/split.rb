@@ -1,6 +1,6 @@
 class Split < ActiveRecord::Base
   attr_accessor :from, :with, :amount, :note
-  attr_accessible :with, :amount, :note
+  attr_accessible :from, :with, :amount, :note
   has_many :split_transactions
 
   validates :from, :presence => true
@@ -10,12 +10,11 @@ class Split < ActiveRecord::Base
   before_save :set_transactions
 
   def set_transactions
-    with_list = with.split(',')
-    with_list.each do |user|
+    with.each do |user|
       split_transactions.build(
-        :from => User.find(from),
-        :to => User.find_by_uid(user),
-        :amount => (amount.to_f / (with_list.size + 1)),
+        :from => from,
+        :to => user,
+        :amount => (amount.to_f / (with.count + 1)),
         :note => note,
         :split => self
       )

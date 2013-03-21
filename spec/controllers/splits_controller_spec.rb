@@ -3,6 +3,7 @@ require 'spec_helper'
 describe SplitsController, "#create" do
   before do 
     @params = FactoryGirl.attributes_for(:split)
+    @params[:with] = @params[:with].collect {|u| u.uid}
     sign_in FactoryGirl.create(:user)
   end
 

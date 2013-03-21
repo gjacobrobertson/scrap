@@ -32,12 +32,12 @@ describe User do
       @user.save
       @debtor = FactoryGirl.create(:user)
       @creditor = FactoryGirl.create(:user)
-      @debt = FactoryGirl.create(:split, :from => @creditor, :with => [@user.uid], :amount => 5)
+      @debt = FactoryGirl.create(:split, :from => @creditor, :with => [@user], :amount => 5)
       @debt.split_transactions.each {|t| t.approve}
-      @credit = FactoryGirl.create(:split, :from => @user, :with => [@debtor.uid], :amount => 10)
+      @credit = FactoryGirl.create(:split, :from => @user, :with => [@debtor], :amount => 10)
       @credit.split_transactions.each{|t| t.approve}
-      @unconfirmed = FactoryGirl.create(:split, :from => @creditor, :with => [@user.uid], :amount => 15)
-      @rejected = FactoryGirl.create(:split, :from => @user, :with => [@debtor.uid], :amount => 20)
+      @unconfirmed = FactoryGirl.create(:split, :from => @creditor, :with => [@user], :amount => 15)
+      @rejected = FactoryGirl.create(:split, :from => @user, :with => [@debtor], :amount => 20)
       @rejected.split_transactions.each {|t| t.reject}
     end
 
