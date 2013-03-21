@@ -14,11 +14,9 @@ class SplitsController < ApplicationController
       user
     end
     @split = Split.new(params[:split].merge :from => current_user, :with => with)
-    if @split.save
-      render :partial => 'alert'
-    else
+    unless @split.save
       response.status = 403
-      render :partial => 'alert'
     end
+    render :partial => 'alert'
   end
 end
