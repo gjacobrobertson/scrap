@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe User do
-  before { @user = FactoryGirl.build(:user) }
+  before { @user = FactoryGirl.create(:user) }
 
   subject { @user }
 
@@ -18,6 +18,9 @@ describe User do
   it { should respond_to :debt_to }
   it { should respond_to :pending_approvals }
   it { should respond_to :rejections }
+  it { should respond_to :approvals_for_user }
+  it { should respond_to :rejections_for_user }
+  it { should respond_to :history_for_user }
   it { should have_many :debits }
   it { should have_many :credits }
   it { should be_valid }
@@ -29,7 +32,6 @@ describe User do
 
   describe "debt and credit methods" do
     before do
-      @user.save
       @debtor = FactoryGirl.create(:user)
       @creditor = FactoryGirl.create(:user)
       @debt = FactoryGirl.create(:split, :from => @creditor, :with => [@user], :amount => 5)
@@ -116,6 +118,52 @@ describe User do
       it { should be_a_kind_of Array }
       it { should have(1).items }
       it { should include @rejected.split_transactions.first }
+    end
+  end
+
+  describe "user methods" do
+    before do 
+      @foo = FactoryGirl.create(:user)
+      @bar = FactoryGirl.create(:user)
+
+      @approved_debt = FactoryGirl.create(:split, :from => @foo, :with => [@user])
+      @approved_debt.split_transactions.each{|t| t.approve}
+      @rejected_debt = FactoryGirl.create(:split, :from => @foo, :with => [@user])
+      @rejected_debt.split_transactions.each{|t| t.reject}
+      @pending_debt = FactoryGirl.create(:split, :from => @foo, :with => [@user])
+
+      @approved_credit = FactoryGirl.create(:split, :from => @user, :with => [@foo])
+      @approved_credit.split_transactions.each{|t| t.approve}
+      @rejected_credit = FactoryGirl.create(:split, :from => @user, :with => [@foo])
+      @rejected_credit.split_transactions.each{|t| t.reject}
+      @pending_credit = FactoryGirl.create(:split, :from => @user, :with => [@foo])
+
+      @bar_debt = FactoryGirl.create(:split, :from => @bar, :with => [@user])
+      @bar_credit = FactoryGirl.create(:split, :from => @user, :with => [@bar])
+    end
+
+    describe "approvals_for_user" do
+      subject { @user.approvals_for_user @foo}
+      it { should be_a_kind_of Array }
+      it { should have(2).items }
+      it { should include @pending_debt.split_transactions.first }
+      it { should include @pending_credit.split_transactions.first }
+    end
+
+    describe "rejections_for_user" do
+      subject { @user.rejections_for_user @foo }
+      it { should be_a_kind_of Array }
+      it { should have(2).items }
+      it { should include @rejected_debt.split_transactions.first }
+      it { should include @rejected_credit.split_transactions.first }
+    end
+
+    describe "history_for_user" do
+      subject { @user.history_for_user @foo }
+      it { should be_a_kind_of Array }
+      it { should have(2).items }
+      it { should include @approved_debt.split_transactions.first }
+      it { should include @approved_credit.split_transactions.first }
     end
   end
 end

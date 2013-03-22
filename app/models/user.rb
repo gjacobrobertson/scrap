@@ -83,4 +83,22 @@ class User < ActiveRecord::Base
   def has_notifications
     has_pending_approvals || has_rejections
   end
+
+  def approvals_for_user(user)
+    debts = Transaction.pending.where(:from_id => user.id, :to_id => self.id)
+    credits = Transaction.pending.where(:from_id => self.id, :to_id => user.id)
+    debts + credits
+  end
+
+  def rejections_for_user(user)
+    debts = Transaction.rejected.where(:from_id => user.id, :to_id => self.id)
+    credits = Transaction.rejected.where(:from_id => self.id, :to_id => user.id)
+    debts + credits
+  end
+
+  def history_for_user(user)
+    debts = Transaction.approved.where(:from_id => user.id, :to_id => self.id)
+    credits = Transaction.approved.where(:from_id => self.id, :to_id => user.id)
+    debts + credits
+  end
 end

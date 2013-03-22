@@ -8,6 +8,10 @@ class Transaction < ActiveRecord::Base
   validates :to, :presence => true
   validate :from_cannot_be_to
 
+  scope :approved, where(:confirmed => true)
+  scope :rejected, where(:confirmed => false)
+  scope :pending, where(:confirmed => nil)
+
   def from_cannot_be_to
     if from == to
       errors.add(:from, "Can't be from and to the same user")

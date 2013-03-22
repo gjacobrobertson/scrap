@@ -12,6 +12,6 @@ module ApplicationHelper
   end
 
   def facebook_profile_pic(user)
-    image_tag("https://graph.facebook.com/#{user.uid}/picture")
+    link_to image_tag("https://graph.facebook.com/#{user.uid}/picture"), user
   end
 end

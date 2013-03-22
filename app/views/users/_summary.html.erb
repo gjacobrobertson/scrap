@@ -1,0 +1,28 @@
+<% if current_user.approvals_for_user(@user).count > 0 %>
+  <div class="row-fluid">
+    <div class="span12 approvals">
+      <ul>
+        <%= render :partial => "users/approval", :collection => current_user.approvals_for_user(@user), :as => :approval %>
+      </ul>
+    </div>
+<% end %>
+<% if current_user.rejections_for_user(@user).count > 0 %>
+  <div class="row-fluid">
+    <div class="span12 rejections">
+      <ul>
+        <%= render :partial => "users/rejection", :collection => current_user.rejections_for_user(@user), :as => :rejection %>
+    </div>
+  </div>
+<% end %>
+<% if current_user.history_for_user(@user).count > 0 %>
+  <div class="row-fluid">
+    <div class="span12 history">
+      <ul>
+        <%= render :partial => "users/transaction", :collection => current_user.history_for_user(@user), :as => :transaction %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+</div>
+
+
