@@ -1,6 +1,6 @@
 <li>
   <div class="item">
     <%= facebook_profile_pic(credit[:user]) %>
-    <a href="#"><%=credit[:user].name%></a> owes you <%=number_to_currency(credit[:amount])%>
+    <%= link_to credit[:user].name, credit[:user]%> owes you <%=number_to_currency(credit[:amount])%>
   </div>
 </li>

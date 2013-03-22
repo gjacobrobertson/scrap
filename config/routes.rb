@@ -4,6 +4,7 @@ Scrapv2::Application.routes.draw do
     get 'sign_in', :to => 'devise/sessions#new', :as => :new_user_session
     get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   end
+  resources :users, :only => [:show]
 
   resources :transactions, :only => [:edit, :update, :destroy] do
     member do
