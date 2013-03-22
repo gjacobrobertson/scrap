@@ -1,7 +1,7 @@
 <div class="row-fluid">
   <div class="span12">
     <div class="header">
-      <h1><%= format_amount current_user.total_net%></h1>
+      <h1 class="net"><%= format_amount current_user.total_net%></h1>
       <p>Net</p>
     </div>
   </div>
@@ -9,7 +9,7 @@
 <div class="row-fluid">
   <div class="span6">
     <div class="header">
-      <h2><%= format_amount current_user.total_credit%></h2>
+      <h2 class="credit"><%= format_amount current_user.total_credit%></h2>
       <p>Owed to you</p>
     </div>
     <ul class="debt-list">
@@ -19,7 +19,7 @@
 
   <div class="span6">
     <div class="header">
-      <h2><%=format_amount current_user.total_debt%></h2>
+      <h2 class="debt"><%=format_amount current_user.total_debt%></h2>
       <p>Owed by you</p>
     </div>
     <ul class="debt-list">

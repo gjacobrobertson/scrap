@@ -12,15 +12,25 @@
   }
 
   .header{
-    border-bottom: 1px solid @borderColor
-  }
-
-  .positive {
-    color:@green;
-  }
-
-  .negative {
-    color:@red;
+    border-bottom: 1px solid @borderColor;
+    .net {
+      .positive {
+        color:@green;
+      }
+      .negative {
+        color:@red;
+      }
+    }
+    .credit {
+      .positive {
+        color:@green;
+      }
+    }
+    .debt {
+      .positive {
+        color:@red;
+      }
+    }
   }
   
   .debt-list
