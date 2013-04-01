@@ -1,7 +1,7 @@
 module TransactionsHelper
   def approval_description(approval)
-    case approval.type
-    when "SplitTransaction"
+    case approval
+    when SplitTransaction
       name = link_to approval.from.name, approval.from
       description = approval.note ? approval.note : 'a cost'
       with = "you"
@@ -14,8 +14,8 @@ module TransactionsHelper
   end
 
   def rejection_description(rejection)
-    case rejection.type
-    when "SplitTransaction"
+    case rejection
+    when SplitTransaction
       name = link_to rejection.to.name, rejection.to
       description = rejection.note ? rejection.note : 'a cost you split'
       share = number_to_currency(rejection.amount)
