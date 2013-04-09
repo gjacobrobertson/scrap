@@ -1,28 +1,75 @@
-<% if current_user.approvals_for_user(@user).count > 0 %>
-  <div class="row-fluid">
-    <div class="span12 approvals">
-      <ul>
-        <%= render :partial => "users/approval", :collection => current_user.approvals_for_user(@user), :as => :approval %>
-      </ul>
-    </div>
-<% end %>
-<% if current_user.rejections_for_user(@user).count > 0 %>
-  <div class="row-fluid">
-    <div class="span12 rejections">
-      <ul>
-        <%= render :partial => "users/rejection", :collection => current_user.rejections_for_user(@user), :as => :rejection %>
-    </div>
+<div class="row-fluid">
+  <div class="span6 pending">
+    <h3>Waiting For You</h3>
+    <ul>
+      <li>
+        <div class="controls">
+          <span class='accept icon-ok'></span>
+          <span class='reject icon-remove'></span>
+        </div>
+        <div class="description">
+          <span>Steven DeVito split a cost with you and 2 others. Your share is $5.00</span>
+        </div>
+      </li>
+      <li>
+        <div class="controls">
+          <span class='edit icon-edit'></span>
+          <span class='delete icon-trash'></span>
+        </div>
+        <div class="description">
+          <span>Steven DeVito rejected his share of $4.00 for stuff</span>
+        </div>
+      </li>
+      <li>
+        <div class="controls">
+          <span class='accept icon-ok'></span>
+          <span class='reject icon-remove'></span>
+        </div>
+        <div class="description">
+          <span>Steven DeVito split a cost with you and 2 others. Your share is $5.00</span>
+        </div>
+      </li>
+      <li>
+        <div class="controls">
+          <span class='edit icon-edit'></span>
+          <span class='delete icon-trash'></span>
+        </div>
+        <div class="description">
+          <span>Steven DeVito rejected his share of $4.00 for stuff</span>
+        </div>
+      </li>
+      <li>
+        <div class="controls">
+          <span class='edit icon-edit'></span>
+          <span class='delete icon-trash'></span>
+        </div>
+        <div class="description">
+          <span>Steven DeVito rejected his share of $4.00 for stuff</span>
+        </div>
+      </li>
+    </ul>
   </div>
-<% end %>
-<% if current_user.history_for_user(@user).count > 0 %>
-  <div class="row-fluid">
-    <div class="span12 history">
-      <ul>
-        <%= render :partial => "users/transaction", :collection => current_user.history_for_user(@user), :as => :transaction %>
-      </ul>
-    </div>
+  <div class="span6 pending">
+    <h3>Waiting For <%= @user.name %></h3>
+    <ul>
+      <li>
+        <div class="controls">
+          <span class='edit icon-edit'></span>
+          <span class='delete icon-trash'></span>
+        </div>
+        <div class="description">
+          <span>You gave Steven DeVito $2.00</span>
+        </div>
+      </li>
+      <li>
+        <div class="controls">
+          <span class='accept icon-ok'></span>
+          <span class='reject icon-remove'></span>
+        </div>
+        <div class="description">
+          <span>You rejected Steven DeVito giving you $3.50</span>
+        </div>
+      </li>
+    </ul>
   </div>
-<% end %>
 </div>
-
-
