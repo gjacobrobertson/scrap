@@ -18,8 +18,7 @@ describe User do
   it { should respond_to :debt_to }
   it { should respond_to :pending_approvals }
   it { should respond_to :rejections }
-  it { should respond_to :approvals_for_user }
-  it { should respond_to :rejections_for_user }
+  it { should respond_to :pending_for_user }
   it { should respond_to :history_for_user }
   it { should have_many :debits }
   it { should have_many :credits }
@@ -142,20 +141,20 @@ describe User do
       @bar_credit = FactoryGirl.create(:split, :from => @user, :with => [@bar])
     end
 
-    describe "approvals_for_user" do
-      subject { @user.approvals_for_user @foo}
+    describe "@user pending_for_user @foo" do
+      subject { @user.pending_for_user @foo}
       it { should be_a_kind_of Array }
       it { should have(2).items }
+      it { should include @rejected_credit.split_transactions.first }
       it { should include @pending_debt.split_transactions.first }
-      it { should include @pending_credit.split_transactions.first }
     end
 
-    describe "rejections_for_user" do
-      subject { @user.rejections_for_user @foo }
+    describe "@foo pending_for_user @user" do
+      subject { @foo.pending_for_user @user }
       it { should be_a_kind_of Array }
       it { should have(2).items }
       it { should include @rejected_debt.split_transactions.first }
-      it { should include @rejected_credit.split_transactions.first }
+      it { should include @pending_credit.split_transactions.first }
     end
 
     describe "history_for_user" do

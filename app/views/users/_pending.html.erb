@@ -1,0 +1,15 @@
+<li>
+  <div class="controls">
+    <% case current_user %>
+    <% when transaction.from %>
+      <span class="edit icon-edit"></span>
+      <span class="delete icon-trash"></span>
+    <% when transaction.to %>
+      <span class="accept icon-ok"></span>
+      <span class="reject icon-remove"></span>
+    <% end %>
+  </div>
+  <div class="description">
+    <span><%=description_for transaction%></span>
+  </div>
+</li>

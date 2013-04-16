@@ -24,4 +24,21 @@ module TransactionsHelper
       "TODO"
     end
   end
+
+  def description_for(transaction)
+    from = transaction.from == current_user ? "You" : transaction.from.name
+    to = transaction.to == current_user ? "You" : transaction.to.name
+    possessive = transaction.to == current_user ? "Your" : "#{transaction.to.name}'s"
+    note = transaction.note ? transaction.note : "a cost"
+    amount = number_to_currency transaction.amount
+    others = case transaction.others_count
+             when 0
+               ""
+             when 1
+               " and 1 other"
+             else
+               " and #{transaction.others_count} others"
+             end
+    return "#{from} split #{note} with #{to}#{others}. #{possessive} share is #{amount}"
+  end
 end
