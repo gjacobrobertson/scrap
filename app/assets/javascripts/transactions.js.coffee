@@ -3,16 +3,19 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 #
 refreshSummary = () ->
-  $.ajax({
-    url:'summary',
-    success: (data, status, xhr) ->
-      $('.summary').html(data)
-  })
+  if $('.summary').length
+    $.ajax({
+      url:'summary',
+      success: (data, status, xhr) ->
+        $('.summary').html(data)
+    })
+
+$('#new_split').on('ajax:success', refreshSummary)
+$('#notifications .refresh-trigger').on('ajax:success', refreshSummary)
 
 refreshNotifications = (evt, data, status, xhr) ->
   $('#notifications').html(data)
   $('#notifications .refresh-trigger').bind('ajax:success', refreshNotifications)
-  refreshSummary()
 
 editSuccess = (evt, data, status, xhr) ->
   refreshNotifications(evt, data, status, xhr)

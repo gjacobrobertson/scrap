@@ -3,7 +3,11 @@ Scrapv2::Application.routes.draw do
   devise_scope :user do
     get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   end
-  resources :users, :only => [:show]
+  resources :users, :only => [:show] do
+    member do
+      get 'summary'
+    end
+  end
 
   resources :transactions, :only => [:edit, :update, :destroy] do
     member do

@@ -4,4 +4,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
+
+  def summary
+    @user = User.find(params[:id])
+    render :partial => 'users/summary'
+  end
 end
