@@ -11,6 +11,7 @@ class Transaction < ActiveRecord::Base
   scope :approved, where(:confirmed => true)
   scope :rejected, where(:confirmed => false)
   scope :pending, where(:confirmed => nil)
+  scope :approved_or_pending, where('confirmed = ? OR confirmed IS NULL', true)
 
   def from_cannot_be_to
     if from == to

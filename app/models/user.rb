@@ -40,19 +40,17 @@ class User < ActiveRecord::Base
   end
 
   def debtors
-    Transaction.where(:from_id => self.id, :confirmed => true).collect{|t| t.to}.uniq
+    Transaction.approved_or_pending.where(:from_id => self.id).collect{|t| t.to}.uniq
   end
 
   def creditors
-    Transaction.where(:to_id => self.id, :confirmed => true).collect{|t| t.from}.uniq
+    Transaction.approved_or_pending.where(:to_id => self.id).collect{|t| t.from}.uniq
   end
 
   def debt_to(user)
     amount = 0
-    Transaction.approved.where(:from_id => self.id, :to_id => user.id).each{|t| amount -= t.amount}
-    Transaction.pending.where(:from_id => self.id, :to_id => user.id).each{|t| amount -= t.amount}
-    Transaction.approved.where(:from_id => user.id, :to_id => self.id).each{|t| amount += t.amount}
-    Transaction.pending.where(:from_id => user.id, :to_id => self.id).each{|t| amount += t.amount}
+    Transaction.approved_or_pending.where(:from_id => self.id, :to_id => user.id).each{|t| amount -= t.amount}
+    Transaction.approved_or_pending.where(:from_id => user.id, :to_id => self.id).each{|t| amount += t.amount}
     amount
   end
 
