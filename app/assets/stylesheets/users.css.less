@@ -5,22 +5,29 @@
 @import "bootstrap_and_overrides.css.less";
 
 .profile-pic {
-  display:block;
-  margin-left:auto;
-  margin-right:auto;
   padding:4px;
   border: 1px solid @borderColor;
+  @media (min-width:768px) {
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  @media (max-width:767px) {
+    margin-bottom: 10px;
+  }
+}
+
+.name {
+  @media (max-width:767px) {
+    display: inline-block;
+  }
 }
 
 #user-summary {
-  .pending {
-    height:346px;
-  }
   div[class*="span"] {
     border: 1px solid @borderColor;
     border-radius: @baseBorderRadius;
     background-color:@backgroundColor;
-    overflow:auto;
     margin-bottom:10px;
     h3 {
       border-bottom:1px solid @borderColor;
@@ -37,7 +44,7 @@
           margin-left: 60px;
         }
       }
-      li:nth-child(4) {
+      li:last-child {
         border-bottom: none;
       }
     }
