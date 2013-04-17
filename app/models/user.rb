@@ -49,8 +49,10 @@ class User < ActiveRecord::Base
 
   def debt_to(user)
     amount = 0
-    Transaction.where(:from_id => self.id, :to_id => user.id, :confirmed => true).each{|t| amount -= t.amount}
-    Transaction.where(:from_id => user.id, :to_id => self.id, :confirmed => true).each{|t| amount += t.amount}
+    Transaction.approved.where(:from_id => self.id, :to_id => user.id).each{|t| amount -= t.amount}
+    Transaction.pending.where(:from_id => self.id, :to_id => user.id).each{|t| amount -= t.amount}
+    Transaction.approved.where(:from_id => user.id, :to_id => self.id).each{|t| amount += t.amount}
+    Transaction.pending.where(:from_id => user.id, :to_id => self.id).each{|t| amount += t.amount}
     amount
   end
 
