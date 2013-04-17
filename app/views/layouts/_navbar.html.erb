@@ -1,7 +1,7 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">Scrap</a>
+      <%= link_to "Scrap", root_path, :class => 'brand' %>
       <% if user_signed_in? %>
         <ul class="nav">
           <li id="notifications" class="dropdown">
