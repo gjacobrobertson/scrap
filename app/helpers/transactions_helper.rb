@@ -25,20 +25,114 @@ module TransactionsHelper
     end
   end
 
-  def description_for(transaction)
-    from = transaction.from == current_user ? "You" : transaction.from.name
-    to = transaction.to == current_user ? "You" : transaction.to.name
-    possessive = transaction.to == current_user ? "Your" : "#{transaction.to.name}'s"
-    note = transaction.note ? transaction.note : "a cost"
+  def and_others(transaction)
+    case transaction.others_count
+    when 0
+      ""
+    when 1
+      " and 1 other"
+    else
+      " and #{transaction.others_count} others"
+    end
+  end
+
+  def approved_credit_description(transaction)
+    name = transaction.to.name
     amount = number_to_currency transaction.amount
-    others = case transaction.others_count
-             when 0
-               ""
-             when 1
-               " and 1 other"
-             else
-               " and #{transaction.others_count} others"
-             end
-    return "#{from} split #{note} with #{to}#{others}. #{possessive} share is #{amount}"
+    others = and_others(transaction)
+
+    case transaction
+    when SplitTransaction
+      note = transaction.note ? transaction.note : "a cost"
+      "You split #{note} with #{name}#{others}. Their share was #{amount}."
+    end
+  end
+
+  def approved_debt_description(transaction)
+    name = transaction.from.name
+    amount = number_to_currency transaction.amount
+    others = and_others(transaction)
+
+    case transaction
+    when SplitTransaction
+      note = transaction.note ? transaction.note : "a cost"
+      "#{name} split #{note} with you#{others}. Your share was #{amount}."
+    end
+  end
+
+  def rejected_credit_description(transaction)
+    name = transaction.to.name
+    amount = number_to_currency transaction.amount
+
+    case transaction
+    when SplitTransaction
+      note = transaction.note ? transaction.note : "a cost"
+      "#{name} rejected their share of #{amount} for #{note}."
+    end
+  end
+
+  def rejected_debt_description(transaction)
+    amount = number_to_currency transaction.amount
+
+    case transaction
+    when SplitTransaction
+      note = transaction.note ? transaction.note : "a cost"
+      "You rejected your share of #{amount} for #{note}."
+    end
+  end
+
+  def pending_credit_description(transaction)
+    name = transaction.to.name
+    amount = number_to_currency transaction.amount
+    others = and_others(transaction)
+
+    case transaction
+    when SplitTransaction
+      note = transaction.note ? transaction.note : "a cost"
+      "You split #{note} with #{name}#{others}. Their share is #{amount}."
+    end
+  end
+
+  def pending_debt_description(transaction)
+    name = transaction.from.name
+    amount = number_to_currency transaction.amount
+    others = and_others(transaction)
+
+    case transaction
+    when SplitTransaction
+      note = transaction.note ? transaction.note : "a cost"
+      "#{name} split #{note} with you#{others}. Your share is #{amount}."
+    end
+  end
+
+  def credit_description(transaction)
+    case transaction.confirmed
+    when true
+      approved_credit_description(transaction)
+    when false
+      rejected_credit_description(transaction)
+    when nil
+      pending_credit_description(transaction)
+    end
+  end
+
+  def debt_description(transaction)
+    case transaction.confirmed
+    when true
+      approved_debt_description(transaction)
+    when false
+      rejected_debt_description(transaction)
+    when nil
+      pending_debt_description(transaction)
+    end
+  end
+
+  def description(transaction)
+    case current_user
+    when transaction.from
+      credit_description(transaction)
+    when transaction.to
+      debt_description(transaction)
+    end
   end
 end

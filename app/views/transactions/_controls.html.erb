@@ -1,0 +1,6 @@
+<% case current_user %>
+<% when transaction.from %>
+  <%= render :partial => 'transactions/credit_controls', :locals => { :transaction => transaction } %>
+<% when transaction.to %>
+  <%= render :partial => 'transactions/debt_controls', :locals => { :transaction => transaction } %>
+<% end %>

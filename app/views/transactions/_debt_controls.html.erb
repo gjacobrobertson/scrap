@@ -1,0 +1,9 @@
+<% case transaction.confirmed %>
+<% when true %>
+  <%= render :partial => 'transactions/reject_link', :locals => { :transaction => transaction } %>
+<% when false %>
+  <%= render :partial => 'transactions/approve_link', :locals => { :transaction => transaction } %>
+<% else %>
+  <%= render :partial => 'transactions/approve_link', :locals => { :transaction => transaction } %>
+  <%= render :partial => 'transactions/reject_link', :locals => { :transaction => transaction } %>
+<% end %>

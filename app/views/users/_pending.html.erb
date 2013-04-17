@@ -1,15 +1,8 @@
 <li>
   <div class="controls">
-    <% case current_user %>
-    <% when transaction.from %>
-      <span class="edit icon-edit"></span>
-      <span class="delete icon-trash"></span>
-    <% when transaction.to %>
-      <span class="accept icon-ok"></span>
-      <span class="reject icon-remove"></span>
-    <% end %>
+    <%= render :partial => 'transactions/controls', :locals => { :transaction => transaction } %>
   </div>
   <div class="description">
-    <span><%=description_for transaction%></span>
+    <span><%=description transaction%></span>
   </div>
 </li>
