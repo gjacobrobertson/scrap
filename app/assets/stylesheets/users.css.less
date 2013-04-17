@@ -14,11 +14,14 @@
 
 #user-summary {
   .pending {
+    height:346px;
+  }
+  div[class*="span"] {
     border: 1px solid @borderColor;
     border-radius: @baseBorderRadius;
     background-color:@backgroundColor;
-    height:306px;
     overflow:auto;
+    margin-bottom:10px;
     h3 {
       border-bottom:1px solid @borderColor;
       margin:0px;
@@ -30,45 +33,9 @@
       li {
         padding:10px;
         border-bottom: 1px solid @borderColor;
-        min-height:40px;
+        min-height:50px;
         .description {
-          margin-right:28px;
-        }
-        .controls {
-          float:right;
-          width:28px;
-          font-size:20px;
-          a:hover {
-            text-decoration:none;
-          }
-
-          .accept {
-            color:@green;
-          }
-          .accept:hover {
-            color:darken(@green, 15%);
-          }
-
-          .reject {
-            color: @red;
-          }
-          .reject:hover {
-            color:darken(@red, 15%);
-          }
-
-          .edit {
-            color: #08c;
-          }
-          .edit:hover {
-            color: darken(#08c, 15%);
-          }
-
-          .delete {
-            color:@red;
-          }
-          .delete:hover{
-            color:darken(@red, 15%);
-          }
+          margin-left: 60px;
         }
       }
       li:nth-child(4) {

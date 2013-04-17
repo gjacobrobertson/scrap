@@ -64,35 +64,19 @@ class User < ActiveRecord::Base
     items.sort{|a,b| b[:amount] <=> a[:amount]}
   end
 
-  def pending_approvals
-    Transaction.where(:to_id => self.id, :confirmed => nil).to_a
-  end
-
-  def has_pending_approvals
-    pending_approvals.count > 0
-  end
-
-  def rejections
-    Transaction.where(:from_id => self.id, :confirmed => false).to_a
-  end
-
-  def has_rejections
-    rejections.count > 0
+  def notifications
+    approvals = Transaction.pending.where(:to_id => self.id)
+    rejections = Transaction.rejected.where(:from_id => self.id)
+    approvals + rejections
   end
 
   def has_notifications
-    has_pending_approvals || has_rejections
+    notifications.count > 0
   end
 
   def pending_for_user(user)
     credits = Transaction.rejected.where(:from_id => self.id, :to_id => user.id)
     debts = Transaction.pending.where(:from_id => user.id, :to_id => self.id)
-    debts + credits
-  end
-
-  def rejections_for_user(user)
-    debts = Transaction.rejected.where(:from_id => user.id, :to_id => self.id)
-    credits = Transaction.rejected.where(:from_id => self.id, :to_id => user.id)
     debts + credits
   end
 

@@ -2,13 +2,21 @@
   <div class="span6 pending">
     <h3>Waiting For You</h3>
     <ul>
-      <%= render :partial => "users/pending", :collection => current_user.pending_for_user(@user), :as => :transaction %>
+      <%= render :partial => "transactions/show", :collection => current_user.pending_for_user(@user), :as => :transaction %>
     </ul>
   </div>
   <div class="span6 pending">
-    <h3>Waiting For <%= @user.name %></h3>
+    <h3>Waiting For Them</h3>
     <ul>
-      <%= render :partial => "users/pending", :collection => @user.pending_for_user(current_user), :as => :transaction %>
+      <%= render :partial => "transactions/show", :collection => @user.pending_for_user(current_user), :as => :transaction %>
+    </ul>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span12 history">
+    <h3>History</h3>
+    <ul>
+      <%= render :partial => "transactions/show", :collection => @user.history_for_user(current_user), :as => :transaction %>
     </ul>
   </div>
 </div>

@@ -1,8 +1,11 @@
-<li>
+<li class="transaction">
   <div class="controls">
     <%= render :partial => 'transactions/controls', :locals => { :transaction => transaction } %>
   </div>
+  <div class="pic">
+    <%= pic(transaction).html_safe %>
+  </div>
   <div class="description">
-    <span><%=description transaction%></span>
+    <span><%=description(transaction).html_safe%></span>
   </div>
 </li>

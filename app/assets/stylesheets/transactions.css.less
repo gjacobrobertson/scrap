@@ -1,0 +1,52 @@
+@import "bootstrap_and_overrides.css.less";
+
+.transaction {
+  min-height:50px;
+  .description {
+    margin-right: 32px;
+    margin-left: 50px;
+  }
+  .pic {
+    float:left;
+    width:50px;
+
+  }
+  .controls {
+    float:right;
+    width:32px;
+    font-size:25px;
+    a:hover {
+      text-decoration:none;
+    }
+
+    .accept {
+      color:@green;
+    }
+    .accept:hover {
+      color:darken(@green, 15%);
+    }
+
+    .reject {
+      color: @red;
+    }
+    .reject:hover {
+      color:darken(@red, 15%);
+    }
+
+    .edit {
+      color: #08c;
+    }
+    .edit:hover {
+      color: darken(#08c, 15%);
+    }
+
+    .delete {
+      color:@red;
+    }
+    .delete:hover{
+      color:darken(@red, 15%);
+    }
+  }
+}
+
+

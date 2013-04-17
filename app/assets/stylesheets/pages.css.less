@@ -80,59 +80,16 @@
   }
   .dropdown-menu {
     font-size:14px;
-    .notification {
-      float:left;
-      width:300px;
+    padding:0px;
+    li {
+      width:500px;
+      padding:5px;
       border-top: 1px solid @borderColor;
-      .notification-pic {
-        float:left;
-        width:40px;
-        padding:5px;
-      }
-      .notification-description {
-        float:left;
-        width:202px;
-        padding:5px;
-      }
-      .notification-controls {
-        float:left;
-        width:28px;
-        padding:5px;
-        font-size:20px;
-        a:hover {
-          text-decoration:none;
-        }
-
-        .accept {
-          color:@green;
-        }
-        .accept:hover {
-          color:darken(@green, 15%);
-        }
-
-        .reject {
-          color: @red;
-        }
-        .reject:hover {
-          color:darken(@red, 15%);
-        }
-
-        .edit {
-          color: #08c;
-        }
-        .edit:hover {
-          color: darken(#08c, 15%);
-        }
-
-        .delete {
-          color:@red;
-        }
-        .delete:hover{
-          color:darken(@red, 15%);
-        }
+      .description {
+        margin-left: 55px;
       }
     }
-    .notification:first-child {
+    li:first-child {
       border-top:none;
     }
   }

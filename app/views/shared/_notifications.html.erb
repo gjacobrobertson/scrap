@@ -3,8 +3,7 @@
     <span class="icon-flag"></span>
   </a>
   <ul class="dropdown-menu">
-    <%= render :partial => "shared/approval", :collection => current_user.pending_approvals, :as => :approval %>
-    <%= render :partial => "shared/rejection", :collection => current_user.rejections, :as => :rejection %>
+    <%= render :partial => "transactions/show", :collection => current_user.notifications, :as => :transaction %>
   </ul>
 <% else %>
   <a href='#'><span class="navbar-link icon-flag"></span></a>

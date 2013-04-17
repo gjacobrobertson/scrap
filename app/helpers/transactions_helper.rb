@@ -1,29 +1,4 @@
 module TransactionsHelper
-  def approval_description(approval)
-    case approval
-    when SplitTransaction
-      name = link_to approval.from.name, approval.from
-      description = approval.note ? approval.note : 'a cost'
-      with = "you"
-      with = with + " and #{approval.others_count} others" if approval.others_count > 0
-      share = number_to_currency(approval.amount)
-      "#{name} split #{description} with #{with}. Your share is #{share}".html_safe
-    else
-      "TODO"
-    end
-  end
-
-  def rejection_description(rejection)
-    case rejection
-    when SplitTransaction
-      name = link_to rejection.to.name, rejection.to
-      description = rejection.note ? rejection.note : 'a cost you split'
-      share = number_to_currency(rejection.amount)
-      "#{name} rejected their share of #{share} for #{description}".html_safe
-    else
-      "TODO"
-    end
-  end
 
   def and_others(transaction)
     case transaction.others_count
@@ -37,7 +12,7 @@ module TransactionsHelper
   end
 
   def approved_credit_description(transaction)
-    name = transaction.to.name
+    name = link_to transaction.to.name, transaction.to
     amount = number_to_currency transaction.amount
     others = and_others(transaction)
 
@@ -49,7 +24,7 @@ module TransactionsHelper
   end
 
   def approved_debt_description(transaction)
-    name = transaction.from.name
+    name = link_to transaction.from.name, transaction.from
     amount = number_to_currency transaction.amount
     others = and_others(transaction)
 
@@ -61,7 +36,7 @@ module TransactionsHelper
   end
 
   def rejected_credit_description(transaction)
-    name = transaction.to.name
+    name = link_to transaction.to.name, transaction.to
     amount = number_to_currency transaction.amount
 
     case transaction
@@ -82,7 +57,7 @@ module TransactionsHelper
   end
 
   def pending_credit_description(transaction)
-    name = transaction.to.name
+    name = link_to transaction.to.name, transaction.to
     amount = number_to_currency transaction.amount
     others = and_others(transaction)
 
@@ -94,7 +69,7 @@ module TransactionsHelper
   end
 
   def pending_debt_description(transaction)
-    name = transaction.from.name
+    name = link_to transaction.from.name, transaction.from
     amount = number_to_currency transaction.amount
     others = and_others(transaction)
 
@@ -133,6 +108,15 @@ module TransactionsHelper
       credit_description(transaction)
     when transaction.to
       debt_description(transaction)
+    end
+  end
+
+  def pic(transaction)
+    case current_user
+    when transaction.from
+      facebook_profile_pic(transaction.to)
+    when transaction.to
+      facebook_profile_pic(transaction.from)
     end
   end
 end
