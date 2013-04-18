@@ -10,4 +10,5 @@ refreshUserSummary = () ->
         $('#user-summary').html(data)
     })
 
-$('.refresh-trigger').on('ajax:success', refreshUserSummary)
+$('#notifications, #user-summary').on('ajax:success', '.refresh-trigger', refreshUserSummary)
+$('#edit-modal').on('ajax:success', 'form', refreshUserSummary)

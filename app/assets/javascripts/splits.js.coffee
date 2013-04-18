@@ -31,8 +31,8 @@ showAlert = (data) ->
       e()
     )
 
-$('#new_split').bind('ajax:success', formSuccess)
-$('#new_split').bind('ajax:error', formFailure)
+$('#new_split').on('ajax:success', formSuccess)
+$('#new_split').on('ajax:error', formFailure)
 
 $('#split_with').tokenInput("/friends",{
   theme:'facebook',
