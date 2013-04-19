@@ -5,6 +5,7 @@
 @import "bootstrap_and_overrides.css.less";
 
 .profile-pic {
+  vertical-align:top;
   padding:4px;
   border: 1px solid @borderColor;
   @media (min-width:768px) {
@@ -20,6 +21,43 @@
 .name {
   @media (max-width:767px) {
     display: inline-block;
+  }
+}
+
+.exchanges {
+  form {
+    display: block;
+    margin-bottom:0px;
+  }
+  .exchange {
+    .prepend {
+      float:left;
+      width:63px;
+      padding:4px;
+      box-sizing:border-box;
+      text-align:right;
+      background-color:@backgroundColor;
+      border: solid #ccc 1px;
+      border-right:0px;
+      border-radius: @baseBorderRadius 0px 0px @baseBorderRadius;
+    }
+    .input {
+      display:block;
+      margin-left:63px;
+      margin-right:40px;
+      input { 
+        width:100%;
+        box-sizing:border-box;
+        height:30px;
+        border-radius:0px;
+      }
+    }
+    .control {
+      float:right;
+      button {
+        border-radius: 0px @baseBorderRadius @baseBorderRadius 0px;
+      }
+    }
   }
 }
 
