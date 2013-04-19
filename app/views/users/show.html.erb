@@ -3,34 +3,9 @@
     <%= image_tag "https://graph.facebook.com/#{@user.uid}/picture?type=large", :class => "profile-pic"%>
     <div class="name" >
       <h2><%=@user.name%></h2>
-      <p class="lead"><%= debt_total @user %></p>
+      <p class="lead total"><%= debt_total @user %></p>
       <div class="exchanges">
-        <form>
-          <div class="exchange">
-            <div class="control">
-              <button class="btn btn-primary" type="button"><span class="icon-exchange"></span></button>
-            </div>
-            <div class="prepend">
-              <span>I gave $</span>
-            </div>
-            <div class="input">
-              <input type="text" class="span1"/>
-            </div>
-          </div>
-        </form>
-        <form>
-          <div class="exchange">
-            <div class="control">
-              <button class="btn btn-primary" type="button"><span class="icon-exchange"></span></button>
-            </div>
-            <div class="prepend">
-              <span>I got $</span>
-            </div>
-            <div class="input">
-              <input type="text" class="span1"/>
-            </div>
-          </div>
-        </form>
+        <%= render 'transactions/mini_form' %>
       </div>
     </div>
   </div>

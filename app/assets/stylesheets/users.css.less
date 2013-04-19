@@ -24,41 +24,45 @@
   }
 }
 
-.exchanges {
-  form {
-    display: block;
-    margin-bottom:0px;
+#new_transaction {
+  display: block;
+  margin-bottom:0px;
+  .prepend {
+    float:left;
+    width:63px;
+    padding: 4px;
+    box-sizing:border-box;
+    text-align:right;
+    background-color:@backgroundColor;
+    border: solid #ccc 1px;
+    border-right:0px;
+    border-radius: @baseBorderRadius 0px 0px @baseBorderRadius;
+    label {
+      margin:0px;
+    }
   }
-  .exchange {
-    .prepend {
-      float:left;
-      width:63px;
-      padding:4px;
+  .input {
+    display:block;
+    margin-left:63px;
+    margin-right:40px;
+    input { 
+      width:100%;
       box-sizing:border-box;
-      text-align:right;
-      background-color:@backgroundColor;
-      border: solid #ccc 1px;
-      border-right:0px;
-      border-radius: @baseBorderRadius 0px 0px @baseBorderRadius;
-    }
-    .input {
-      display:block;
-      margin-left:63px;
-      margin-right:40px;
-      input { 
-        width:100%;
-        box-sizing:border-box;
-        height:30px;
-        border-radius:0px;
-      }
-    }
-    .control {
-      float:right;
-      button {
-        border-radius: 0px @baseBorderRadius @baseBorderRadius 0px;
-      }
+      height:30px;
+      border-radius:0px;
     }
   }
+  .control {
+    float:right;
+    button {
+      border-radius: 0px @baseBorderRadius @baseBorderRadius 0px;
+    }
+  }
+  .alert {
+    ul {
+      margin-bottom:0px;
+    }
+  } 
 }
 
 #user-summary {

@@ -1,5 +1,5 @@
 class Transaction < ActiveRecord::Base
-  attr_accessible :amount, :confirmed, :note
+  attr_accessible :amount, :confirmed, :note, :to, :to_id
   belongs_to :from, :class_name => 'User'
   belongs_to :to, :class_name => 'User'
 

@@ -24,3 +24,36 @@ $('#edit-submit').click(() ->
 $('#edit-modal').on('ajax:success', 'form', editSuccess)
 $('#edit-modal').on('ajax:error', 'form', editFailure)
 
+$('#new_transaction button').click(() ->
+  $('#new_transaction').submit())
+
+formSuccess = (evt, data, success, xhr) ->
+  showAlert(data)
+  $('#transaction_amount').val('')
+
+formFailure = (evt, xhr, status, error) ->
+  if xhr.status = 403
+    showAlert(xhr.responseText)
+  else
+    showAlert ( "
+      <div class='alert alert-error'>
+        <button type='button' class='close'>&times;</button>
+        An Error Occurred
+      </div>")
+
+showAlert = (data) ->
+  if $('#alert-container').is(":visible")
+    $('#alert-container').slideUp()
+  $('#alert-container').queue( (e) ->
+      $(this).html(data)
+      e())
+    .slideDown()
+    .queue( (e) ->
+      $('#alert-container button.close').click(() ->
+        $('#alert-container').slideUp()
+      )
+      e()
+    )
+
+$('#new_transaction').on('ajax:success', formSuccess)
+$('#new_transaction').on('ajax:error', formFailure)

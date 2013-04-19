@@ -7,8 +7,10 @@ refreshUserSummary = () ->
     $.ajax({
       url: $('#user-summary').data('id') + '/summary',
       success: (data, status, xhr) ->
-        $('#user-summary').html(data)
+        $('.total').html(data.total)
+        $('#user-summary').html(data.summary)
     })
 
 $('#notifications, #user-summary').on('ajax:success', '.refresh-trigger', refreshUserSummary)
 $('#edit-modal').on('ajax:success', 'form', refreshUserSummary)
+$('#new_transaction').on('ajax:success', refreshUserSummary)

@@ -9,7 +9,7 @@ Scrapv2::Application.routes.draw do
     end
   end
 
-  resources :transactions, :only => [:edit, :update, :destroy] do
+  resources :transactions, :only => [:create, :edit, :update, :destroy] do
     member do
       post 'approve'
       post 'reject'

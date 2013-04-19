@@ -20,18 +20,22 @@ module TransactionsHelper
     when SplitTransaction
       note = transaction.note ? transaction.note : "a cost"
       "You split #{note} with #{name}#{others}. Their share was #{amount}."
+    else
+      "You gave #{amount} to #{name}"
     end
   end
 
   def approved_debt_description(transaction)
     name = link_to transaction.from.name, transaction.from
     amount = number_to_currency transaction.amount
-    others = and_others(transaction)
 
     case transaction
     when SplitTransaction
       note = transaction.note ? transaction.note : "a cost"
+      others = and_others(transaction)
       "#{name} split #{note} with you#{others}. Your share was #{amount}."
+    else
+      "#{name} gave you #{amount}"
     end
   end
 
@@ -43,40 +47,49 @@ module TransactionsHelper
     when SplitTransaction
       note = transaction.note ? transaction.note : "a cost"
       "#{name} rejected their share of #{amount} for #{note}."
+    else
+      "#{name} rejected that you gave them #{amount}"
     end
   end
 
   def rejected_debt_description(transaction)
+    name = link_to transaction.from.name, transaction.from
     amount = number_to_currency transaction.amount
 
     case transaction
     when SplitTransaction
       note = transaction.note ? transaction.note : "a cost"
       "You rejected your share of #{amount} for #{note}."
+    else
+      "You rejected that #{name} gave you #{amount}"
     end
   end
 
   def pending_credit_description(transaction)
     name = link_to transaction.to.name, transaction.to
     amount = number_to_currency transaction.amount
-    others = and_others(transaction)
 
     case transaction
     when SplitTransaction
+      others = and_others(transaction)
       note = transaction.note ? transaction.note : "a cost"
       "You split #{note} with #{name}#{others}. Their share is #{amount}."
+    else
+      "You gave #{amount} to #{name}."
     end
   end
 
   def pending_debt_description(transaction)
     name = link_to transaction.from.name, transaction.from
     amount = number_to_currency transaction.amount
-    others = and_others(transaction)
 
     case transaction
     when SplitTransaction
+      others = and_others(transaction)
       note = transaction.note ? transaction.note : "a cost"
       "#{name} split #{note} with you#{others}. Your share is #{amount}."
+    else
+      "#{name} gave you #{amount}."
     end
   end
 

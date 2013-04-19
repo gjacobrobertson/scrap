@@ -3,6 +3,15 @@ class TransactionsController < ApplicationController
   before_filter :to_current_user, :only => [:approve, :reject]
   before_filter :from_current_user, :only => [:edit, :update, :destroy]
 
+  def create
+    @transaction = Transaction.new(params[:transaction])
+    @transaction.from = current_user
+    unless @transaction.save
+      response.status = 403
+    end
+    render :partial => 'shared/alert', :locals => { :object => @transaction }
+  end
+
   def approve
     @transaction.approve
     render :partial => 'shared/notifications'

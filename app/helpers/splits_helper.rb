@@ -1,11 +1,15 @@
 module SplitsHelper
-  def alertMessage(split)
-    if @split.valid?
-      "Sucessfully Split #{number_to_currency(@split.amount)}"
+  def alertMessage(object)
+    if object.valid?
+      case object
+      when Split
+        "Sucessfully Split #{number_to_currency(object.amount)}"
+      when Transaction
+        "Gave #{number_to_currency(object.amount)} to #{object.to.name}"
+      end
     else
-
       content_tag :ul do
-        @split.errors.full_messages.collect do |error|
+        object.errors.full_messages.collect do |error|
           concat(content_tag :li, error)
         end
       end

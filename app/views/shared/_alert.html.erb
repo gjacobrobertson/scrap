@@ -1,0 +1,4 @@
+<%= content_tag :div, :class => "alert alert-#{object.valid? ? 'success' : 'error' }" do %>
+  <button type="button" class="close">&times;</button>
+  <%= alertMessage(object) %>
+<% end %>

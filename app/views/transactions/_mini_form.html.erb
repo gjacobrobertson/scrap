@@ -1,0 +1,13 @@
+<%= form_for @transaction, :url => transactions_path, :remote => true do |f| %>
+  <%= f.hidden_field :to_id %>
+  <div class="control">
+    <button class="btn btn-primary" type="button"><span class="icon-exchange"></span></button>
+  </div>
+  <div class="prepend">
+    <%= f.label :amount, 'I gave $' %>
+  </div>
+  <div class="input">
+    <%= f.text_field :amount %>
+  </div>
+  <div id="alert-container"></div>
+<% end %>
